@@ -15,8 +15,6 @@ namespace QuickReview.Mvc.Controllers
     using QuickReview.Lib;
     using QuickReview.Mvc.Models;
 
-    // TODO make the page prettier    
-
     /// <summary>
     /// The home controller.
     /// </summary>
@@ -37,7 +35,7 @@ namespace QuickReview.Mvc.Controllers
                                 {
                                     Text = id.DisplayName,
                                     Value = id.UniqueName,
-                                    Selected = selectedUser == id.UniqueName
+                                    Selected = selectedUser.ToLower() == id.UniqueName.ToLower()
                                 };
             model.Shelvesets = from sh in TfsConnect.GetOrderedShelvesets(selectedUser)
                                select new ShelvesetModel

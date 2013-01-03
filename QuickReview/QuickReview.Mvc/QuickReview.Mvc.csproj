@@ -37,7 +37,7 @@
     <WarningLevel>4</WarningLevel>
     <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
     <ExcludeApp_Data>true</ExcludeApp_Data>
-    <DesktopBuildPackageLocation>obj\Debug\Package\QuickReview.zip</DesktopBuildPackageLocation>
+    <DesktopBuildPackageLocation>obj\Debug\Package\QuickReviewWebApp.zip</DesktopBuildPackageLocation>
     <DeployIisAppPath>Default Web Site/QuickReview</DeployIisAppPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
