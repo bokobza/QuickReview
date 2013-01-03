@@ -1,0 +1,7 @@
+﻿@model QuickReview.Mvc.Models.ReviewModel
+
+<hgroup class="title">   
+    <h2>Review for shelveset @Model.ShelvesetName</h2>
+</hgroup>
+
+@Html.Raw(@Model.ShelvesetReport)

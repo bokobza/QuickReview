@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href='http://fonts.googleapis.com/css?family=Denk+One' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquerycookies")
+</head>
+<body>
+    <div id="container">
+        <header id="header">
+                <div class="header-container">
+                    <h1 class="logo">
+                        <a href="/">QuickReview</a>    
+                    </h1>                    
+                    <nav class="left">
+                        <ul class="cf">                          
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>  
+                            <li>
+                                <a href="#" class="settings">Settings</a>                            
+                                <fieldset id="settings_menu">
+                                    <label for="default-email">Default email recipient:</label>
+                                    <input id="EmailRecipient" name="EmailRecipient" type="text"/>                                                                                                       
+                                </fieldset>
+                           </li>                      
+                          <li>@Html.ActionLink("About", "About", "Home")</li>
+                        </ul>
+                    </nav>
+                    <nav class="right">
+                        <ul class="cf">
+                            <li>
+                                <div id="user">Hello, @User.Identity.Name !</div>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                    @RenderBody()
+                </section>
+        </div>
+    </div>
+    <footer>
+            <div class="content-wrapper">
+                <div class="float-left-footer">
+                    <p>&copy; @DateTime.Now.Year - QuickReview</p>
+                </div>
+            </div>
+        </footer>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+<script type="text/javascript">
+    $(".settings").click(function (event)
+    {
+        $("input#EmailRecipient").val($.cookie('emailAddress'));
+        event.preventDefault();
+        $("fieldset#settings_menu").toggle();
+        event.stopPropagation();
+    });
+
+    $("fieldset#settings_menu").click(function (event)
+    {
+        event.stopPropagation();
+    });
+
+    $(document).click(function ()
+    {
+        if ($("fieldset#settings_menu").is(":visible"))
+        {
+            $.cookie('emailAddress', $("input#EmailRecipient").val(), { expires: 365, path: '/' });
+            $("fieldset#settings_menu").hide();
+        }
+    });    
+</script>

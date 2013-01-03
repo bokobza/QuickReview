@@ -1,0 +1,76 @@
+﻿@model QuickReview.Mvc.Models.MainViewModel
+@using System.Collections
+@using QuickReview.Mvc.Models
+@{    
+    ViewBag.Message = "Choose the shelveset you want to review.";
+}
+
+<hgroup class="title">
+    <h2>@ViewBag.Message</h2>
+</hgroup>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "myForm" }))
+{
+    <div id="select-style">
+        <label for="SelectedUser">User:</label>
+        @Html.DropDownListFor(x => x.SelectedUser, Model.UsersChoice, new { onchange = "this.form.submit()", @class = "dropdown-style" })
+    </div>
+
+    if (Model.Shelvesets != null && this.Model.Shelvesets.Any())
+    {    
+        <table id="table-style">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Date
+                    </th>
+                    <th>
+                        Create
+                    </th>
+                </tr>
+            </thead>
+            @foreach (var shelveset in Model.Shelvesets)
+            {
+                <tr>
+                    <td>
+                        @Html.Encode(shelveset.Name)
+                    </td>
+                    <td>
+                        @Html.Encode(String.Format("{0:g}", shelveset.DateCreated))
+                    </td>
+                    <td>
+                        @Html.ActionLink("Email", "CreateEmail", shelveset, new { @class = "email"})
+                        <span class="or">or</span>
+                        @Html.ActionLink("Open in browser", "Review", shelveset, new { @class = "open-in-browser", target = "_blank" })
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+    <p>
+        No shelveset associated with this user.</p>
+    }
+}
+<script type="text/javascript">
+    var anchors = $('a.email');
+    $.each(anchors, function (item, index)
+    {
+        var a = $(this);
+        var href = a.attr('href');
+        a.attr('data-href', href);
+        a.attr('href', '#');
+        a.bind('click', function ()
+        {
+            var x = $(this);
+            var emailAddress = $.cookie('emailAddress');
+            x.attr('data-href', x.attr('data-href') + '&emailRecipient=' + emailAddress);          
+            $('#myForm').get(0).setAttribute('action', x.attr('data-href'));
+            $('#myForm').submit();
+        });
+    });
+</script>

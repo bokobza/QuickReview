@@ -1,0 +1,179 @@
+<#@ template language="C#" #>
+<HTML>
+<HEAD>
+<STYLE type=text/css>P.myclass {
+	MARGIN: 0cm 0cm 0pt
+}
+LI.myclass {
+	MARGIN: 0cm 0cm 0pt
+}
+DIV.myclass {
+	MARGIN: 0cm 0cm 0pt
+}
+TABLE.myclass {
+	MARGIN: 0cm 0cm 0pt
+}
+
+</STYLE>
+<meta http-equiv=Content-Type content="text/html; charset=us-ascii" /><style>
+        <!--
+/* Font Definitions */
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+/* Style Definitions */
+p.Normal, li.Normal, div.Normal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+p.Small, li.Small, div.Small
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}    
+a:link, 
+	{color:blue;
+	text-decoration:underline;}
+a:visited,
+	{color:purple;
+	text-decoration:underline;}
+--></style>
+</HEAD>
+
+<body lang="EN-GB" link="blue" vlink="purple">
+    <p class="myclass">
+        <div>
+            <p class="Normal">
+                <span style='font-family: "Calibri","sans-serif"'>&nbsp;</span>
+            </p>
+            <table class="NormalTable" border="0" cellspacing="0" cellpadding="0" style="border-collapse: collapse; -size: 11pt">
+                <tr>
+                    <td valign="top" style="padding: 0cm 3.6pt 0cm 0cm">
+                        <p class="Normal">
+                            <b><span style='font-family: "Calibri","sans-serif"; color: #3D5277'>Team Project Collection: </span></b>
+                        </p>
+                    </td>
+                    <td valign="top" style="padding: 0cm 3.6pt 0cm 0cm">
+                        <p class="Normal">
+                            <span style='font-family: "Calibri","sans-serif"; color: #3D5277'><#= this.shelvesetData.Changes[0].VersionControlServer.TeamProjectCollection.Name #></span><span style='font-family: "Calibri","sans-serif"'> </span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" style="padding: 0cm 3.6pt 0cm 0cm">
+                        <p class="Normal">
+                            <b><span style='font-family: "Calibri","sans-serif"; color: #3D5277'>Shelveset: </span></b>
+                        </p>
+                    </td>
+                    <td valign="top" style="padding: 0cm 3.6pt 0cm 0cm">
+                        <p class="Normal">
+                            <span style='font-family: "Calibri","sans-serif"; color: #3D5277'>
+                            <a href=<#= this.shelvesetData.GetShelvesetPath() #> target="_blank"><#= this.shelvesetData.Owner + "\\" + this.shelvesetData.Name #></a> 
+                            </span>                           
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" style="padding: 0cm 3.6pt 0cm 0cm">
+                        <p class="Normal">
+                            <b><span style='font-family: "Calibri","sans-serif"; color: #3D5277'>Comment: </span></b>
+                        </p>
+                    </td>
+                    <td valign="top" style="padding: 0cm 3.6pt 0cm 0cm">
+                        <p class="Normal">
+                            <span style='font-family: "Calibri","sans-serif"; color: #3D5277'><#= this.shelvesetData.Comment #></span>                            
+                        </p>
+                    </td>
+                </tr>                
+            </table>
+            
+            <table class="NormalTable" border="0" cellspacing="10" cellpadding="0" style="border-collapse: collapse; -size: 11pt">                
+                <tr>
+                    <td valign="top" style="padding: 0cm 3.6pt 0cm 0cm">
+                        <p class="Normal">
+                            <b>
+                                <span style='font-family: "Calibri","sans-serif"; color: #3D5277'>Work items: </span>
+                            </b>                            
+                        </p>
+                    </td>
+                    <td valign="top" style="padding: 0cm 3.6pt 0cm 0cm">
+                        <# foreach(var item in this.shelvesetData.WorkItems)
+                        { var workItem = item.WorkItem;
+                        #>
+                        <tr>
+                            <td valign="top">
+                                <p class="Small">
+                                    <b>
+                                        <span style='font-family: "Calibri","sans-serif"; color: #3D5277'>
+                                            <a href=<#= this.shelvesetData.GetWorkItemPath(workItem.Id) #> target="_blank"><#= workItem.Id #></a>
+                                        </span>
+                                    </b>
+                                </p>
+                            </td>
+
+                            <td valign="top" style="padding: 0cm 50.6pt 0cm 0cm">
+                                <p class="Small"><span style='font-family: "Calibri","sans-serif"; color: #3D5277'><#=  workItem.Type.Name + " [" + item.CheckinAction + "]" #></span></p>
+                            </td>
+                            
+                            <td valign="top" style="padding: 0cm 1.6pt 0cm 0cm">
+                                <p class="Small"><span style='font-family: "Calibri","sans-serif"; color: #3D5277'><#= workItem.Title #></span></p>
+                            </td>                            
+                        </tr>
+                        <# } #>
+                    </td>
+                </tr>
+            </table>
+            
+            <p class="Normal">
+                <span style='font-family: "Calibri","sans-serif"'>&nbsp;</span></p>
+            <table class="NormalTable" border="0" cellspacing="0" cellpadding="0" style="border-collapse: collapse; -size: 11pt">
+                <tr>
+                    <td valign="top" style="border: none; border-right: solid white 1.0pt; background: #3D5277; padding: 1.45pt 3.6pt 1.45pt 3.6pt">
+                        <p class="Normal" align="center" style="text-align: center">
+                            <b><span style='font-family: "Calibri","sans-serif"; color: white'>Folder</span></b></p>
+                    </td>
+                    <td valign="top" style="border: none; border-right: solid white 1.0pt; background: #3D5277; padding: 1.45pt 3.6pt 1.45pt 3.6pt">
+                        <p class="Normal" align="center" style="text-align: center">
+                            <b><span style='font-family: "Calibri","sans-serif"; color: white'>File name</span></b></p>
+                    </td>
+                    <td valign="top" style="border: none; border-right: solid white 1.0pt; background: #3D5277; padding: 1.45pt 3.6pt 1.45pt 3.6pt">
+                        <p class="Normal" align="center" style="text-align: center">
+                            <b><span style='font-family: "Calibri","sans-serif"; color: white'>Status</span></b></p>
+                    </td>
+                    <td valign="top" style="border: none; border-right: solid white 1.0pt; background: #3D5277; padding: 1.45pt 3.6pt 1.45pt 3.6pt">
+                        <p class="Normal" align="center" style="text-align: center">
+                            <b><span style='font-family: "Calibri","sans-serif"; color: white'>Link</span></b></p>
+                    </td>
+                </tr>
+                <# foreach(var change in this.shelvesetData.Changes)
+                { var changeConfig = this.shelvesetData.GetChangeConfig(change);
+                #> 
+                <tr>
+                    <td valign="top" style="border: none; border-right: solid white 1.0pt; background: #DEE8F2; padding: 1.45pt 3.6pt 1.45pt 3.6pt">
+                        <p class="Small">
+                            <span style='font-family: "Calibri","sans-serif"'><#= change.LocalOrServerFolder #></span></p>
+                    </td>
+                    <td valign="top" style="border: none; border-right: solid white 1.0pt; background: #DEE8F2; padding: 1.45pt 3.6pt 1.45pt 3.6pt">
+                        <p class="Normal">
+                            <span style='font-family: "Calibri","sans-serif"'><#= change.FileName #></span></p>
+                    </td>
+                    <td valign="top" style="border: none; border-right: solid white 1.0pt; background: #DEE8F2; padding: 1.45pt 3.6pt 1.45pt 3.6pt">
+                        <p class="Normal">
+                            <span style='font-family: "Calibri","sans-serif"; color: <#= changeConfig.Colour #>'><#= changeConfig.Text #></span></p>
+                    </td>
+                    <td valign="top" style="border: none; border-right: solid white 1.0pt; background: #DEE8F2; padding: 1.45pt 3.6pt 1.45pt 3.6pt">
+                        <p class="Normal">
+                            <span style='font-family: "Calibri","sans-serif"'><a href=<#= changeConfig.Link #> target="_blank">
+                               <#= changeConfig.LinkText #></a> </span>
+                        </p>
+                    </td>                          
+                </tr>                            
+                <# } #>
+
+            </table>
+            <p class="Normal">&nbsp;</p>
+        </div>
+    </p>    
+</body>
+</HTML>
