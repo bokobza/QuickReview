@@ -12,7 +12,6 @@ namespace QuickReview.Lib
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Security.Principal;
 
     using Microsoft.TeamFoundation;
     using Microsoft.TeamFoundation.Client;
@@ -72,11 +71,11 @@ namespace QuickReview.Lib
 
             // gets the owner name from the environment
             
-            WindowsIdentity id = WindowsIdentity.GetCurrent();
-            CurrentUser = id.Name;
+            //WindowsIdentity id = WindowsIdentity.GetCurrent();
+            //CurrentUser = id.Name;
             //CurrentUser = System.Web.WebPages.WebPageRenderingBase.User.Identity.Name;
             //CurrentUser = projectCollection.AuthorizedIdentity.UniqueName;
-            //CurrentUser = versionControlcServer.AuthorizedIdentity.UniqueName; 
+            CurrentUser = versionControlcServer.AuthorizedIdentity.UniqueName; 
             Users = GetUsers();
             isInitialized = true;
         }
