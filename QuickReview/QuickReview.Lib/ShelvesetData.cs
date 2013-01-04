@@ -169,6 +169,22 @@ namespace QuickReview.Lib
                                 this.ProjectId),
                             LinkText = "diff"
                         };
+                case ChangeType.Edit | ChangeType.Undelete:
+                    return new ChangeConfig()
+                    {
+                        Colour = "black",
+                        Text = "undelete, edit",
+                        Link = string.Format(
+                            Resource.DifferenceUri,
+                            ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
+                            change.SourceServerItem ?? change.ServerItem,
+                            change.Version,
+                            change.ServerItem,
+                            System.Web.HttpUtility.UrlEncode(this.Name),
+                            this.Owner,
+                            this.ProjectId),
+                        LinkText = "diff"
+                    };
                 case ChangeType.Delete:
                     return new ChangeConfig()
                         {
