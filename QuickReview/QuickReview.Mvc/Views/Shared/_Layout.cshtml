@@ -22,7 +22,7 @@
                             <li>
                                 <a href="#" class="settings">Settings</a>                            
                                 <fieldset id="settings_menu">
-                                    <label for="default-email">Default email recipient:</label>
+                                    <label>Default email recipient:</label>
                                     <input id="EmailRecipient" name="EmailRecipient" type="text"/>                                                                                                       
                                 </fieldset>
                            </li>                      
@@ -58,6 +58,7 @@
 <script type="text/javascript">
     $(".settings").click(function (event)
     {
+        // read the cookie
         $("input#EmailRecipient").val($.cookie('emailAddress'));
         event.preventDefault();
         $("fieldset#settings_menu").toggle();
@@ -73,6 +74,7 @@
     {
         if ($("fieldset#settings_menu").is(":visible"))
         {
+            // save the cookie and hide the menu
             $.cookie('emailAddress', $("input#EmailRecipient").val(), { expires: 365, path: '/' });
             $("fieldset#settings_menu").hide();
         }

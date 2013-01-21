@@ -70,11 +70,6 @@ namespace QuickReview.Lib
             }
 
             // gets the owner name from the environment
-            
-            //WindowsIdentity id = WindowsIdentity.GetCurrent();
-            //CurrentUser = id.Name;
-            //CurrentUser = System.Web.WebPages.WebPageRenderingBase.User.Identity.Name;
-            //CurrentUser = projectCollection.AuthorizedIdentity.UniqueName;
             CurrentUser = versionControlcServer.AuthorizedIdentity.UniqueName; 
             Users = GetUsers();
             isInitialized = true;

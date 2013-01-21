@@ -27,7 +27,7 @@ namespace QuickReview.Mvc.Controllers
         {            
             TfsConnect.Initialize(ConfigurationManager.AppSettings.Get("teamProjectUrl"));
 
-            string selectedUser = user ?? TfsConnect.CurrentUser;
+            string selectedUser = user ?? User.Identity.Name;
 
             MainViewModel model = new MainViewModel();
             model.UsersChoice = from IdentityWrapper id in TfsConnect.Users
