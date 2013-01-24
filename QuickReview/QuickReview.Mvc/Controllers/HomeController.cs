@@ -83,14 +83,14 @@ namespace QuickReview.Mvc.Controllers
             shelvesetReport.PrepareEmail(emailRecipient);
             return this.RedirectToAction("Index", new { user = shelveset.OwnerName });
         }
-
+       
         /// <summary> The create report.  </summary>
         /// <param name="shelveset"> The shelveset. </param>
         /// <returns> The default view.  </returns>
-        public ActionResult Review(ShelvesetModel shelveset)
+        public ActionResult PartialShelvesetReportView(ShelvesetModel shelveset)
         {
             ShelvesetReport shelvesetReport = new ShelvesetReport(shelveset.Name, shelveset.OwnerName);
-            return this.View("Review", new ReviewModel() { ShelvesetName = shelveset.Name, ShelvesetReport = shelvesetReport.ReportBody });
+            return this.PartialView("Review", new ReviewModel() { ShelvesetName = shelveset.Name, ShelvesetReport = shelvesetReport.ReportBody });
         }
 
         /// <summary> The About page. </summary>

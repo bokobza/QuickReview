@@ -12,265 +12,166 @@ namespace QuickReview.Lib
     using System;
     
     
-    #line 1 "C:\Users\jeremy\Documents\Visual Studio 2010\Projects\CodeReviewHelpers\QuickReview\HtmlTemplate.tt"
+    #line 1 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "10.0.0.0")]
     public partial class HtmlTemplate : HtmlTemplateBase
     {
         public virtual string TransformText()
         {
-            this.Write("<HTML>\r\n<HEAD>\r\n<STYLE type=text/css>P.myclass {\r\n\tMARGIN: 0cm 0cm 0pt\r\n}\r\nLI.myc" +
-                    "lass {\r\n\tMARGIN: 0cm 0cm 0pt\r\n}\r\nDIV.myclass {\r\n\tMARGIN: 0cm 0cm 0pt\r\n}\r\nTABLE.m" +
-                    "yclass {\r\n\tMARGIN: 0cm 0cm 0pt\r\n}\r\n\r\n</STYLE>\r\n<meta http-equiv=Content-Type con" +
-                    "tent=\"text/html; charset=us-ascii\" /><style>\r\n        <!--\r\n/* Font Definitions " +
-                    "*/\r\n@font-face\r\n\t{font-family:Calibri;\r\n\tpanose-1:2 15 5 2 2 2 4 3 2 4;}\r\n/* Sty" +
-                    "le Definitions */\r\np.Normal, li.Normal, div.Normal\r\n\t{margin:0cm;\r\n\tmargin-botto" +
-                    "m:.0001pt;\r\n\tfont-size:12.0pt;\r\n\tfont-family:\"Times New Roman\",\"serif\";}\r\np.Smal" +
-                    "l, li.Small, div.Small\r\n\t{margin:0cm;\r\n\tmargin-bottom:.0001pt;\r\n\tfont-size:10.0p" +
-                    "t;\r\n\tfont-family:\"Times New Roman\",\"serif\";}    \r\na:link, \r\n\t{color:blue;\r\n\ttext" +
-                    "-decoration:underline;}\r\na:visited,\r\n\t{color:purple;\r\n\ttext-decoration:underline" +
-                    ";}\r\n--></style>\r\n</HEAD>\r\n\r\n<body lang=\"EN-GB\" link=\"blue\" vlink=\"purple\">\r\n    " +
-                    "<p class=\"myclass\">\r\n        <div>\r\n            <p class=\"Normal\">\r\n            " +
-                    "    <span style=\'font-family: \"Calibri\",\"sans-serif\"\'>&nbsp;</span>\r\n           " +
-                    " </p>\r\n            <table class=\"NormalTable\" border=\"0\" cellspacing=\"0\" cellpad" +
-                    "ding=\"0\" style=\"border-collapse: collapse; -size: 11pt\">\r\n                <tr>\r\n" +
-                    "                    <td valign=\"top\" style=\"padding: 0cm 3.6pt 0cm 0cm\">\r\n      " +
-                    "                  <p class=\"Normal\">\r\n                            <b><span style" +
-                    "=\'font-family: \"Calibri\",\"sans-serif\"; color: #3D5277\'>Team Project Collection: " +
-                    "</span></b>\r\n                        </p>\r\n                    </td>\r\n          " +
-                    "          <td valign=\"top\" style=\"padding: 0cm 3.6pt 0cm 0cm\">\r\n                " +
-                    "        <p class=\"Normal\">\r\n                            <span style=\'font-family" +
-                    ": \"Calibri\",\"sans-serif\"; color: #3D5277\'>");
+            this.Write("\r\n<html lang=\"en\">\r\n    <head>\r\n        <!--<link rel=\'stylesheet\' type=\'text/css" +
+                    "\'  href=\'report.css\'/>-->\r\n\r\n<style type=\"text/css\">\r\n        \r\na:link\r\n{\r\n    c" +
+                    "olor: blue;\r\n}\r\na:visited\r\n{\r\n    color: purple;\r\n}\r\n\r\n.bold\r\n{\r\n    font-weight" +
+                    ": bold\r\n}  \r\n\r\ntable\r\n{\r\n    border-collapse: collapse;          \r\n    border: 0" +
+                    ";      \r\n    margin-left: 10px\r\n}\r\n     \r\ntd\r\n{\r\n    border: none; \r\n    border-" +
+                    "right: solid white 1.0pt; \r\n    margin: 0cm;\r\n    margin-bottom: .0001pt;\r\n    f" +
+                    "ont-size: 12.0pt;\r\n    font-family: \"Calibri\",\"sans-serif\";\r\n}   \r\n     \r\ntr.cha" +
+                    "ngesRow td\r\n{\r\n    background: #DEE8F2;\r\n    padding: 1.45pt 3.6pt 1.45pt 3.6pt;" +
+                    "        \r\n}\r\n        \r\ntr.changesRow td.small\r\n{\r\n    font-size:10.0pt;\r\n}\r\n    " +
+                    "    \r\ntr.topRow td\r\n{\r\n    background: #3D5277;\r\n    padding: 1.45pt 3.6pt 1.45p" +
+                    "t 3.6pt;\r\n    text-align: center;\r\n    color: white;\r\n    font-weight: bold\r\n}\r\n" +
+                    "        \r\ntable.detailsTable tr td\r\n{\r\n    padding: 0cm 3.6pt 0cm 0cm;   \r\n    c" +
+                    "olor: #3D5277;              \r\n}\r\n        \r\n      \r\n        \r\ntable.workItemTable" +
+                    " tr td\r\n{\r\n    padding: 0cm 3.6pt 0cm 0cm;\r\n    color: #3D5277;          \r\n    f" +
+                    "ont-size: 10.0pt;    \r\n}        \r\n       \r\ntable.workItemTable tr td.title\r\n{\r\n " +
+                    "   padding: 0cm 1.6pt 0cm 0cm\r\n}\r\n       \r\ntable.workItemTable tr td.checkinActi" +
+                    "on\r\n{\r\n    padding: 0cm 50.6pt 0cm 0cm\r\n}\r\n        \r\n</style>\r\n\r\n    </head>\r\n\r\n" +
+                    "<body>\r\n\r\n    &nbsp;\r\n    <table class=\"detailsTable\">\r\n        <tr>\r\n          " +
+                    "  <td class=\"bold\">Team Project Collection:</td>\r\n            <td>");
             
-            #line 59 "C:\Users\jeremy\Documents\Visual Studio 2010\Projects\CodeReviewHelpers\QuickReview\HtmlTemplate.tt"
+            #line 95 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.shelvesetData.Changes[0].VersionControlServer.TeamProjectCollection.Name));
             
             #line default
             #line hidden
-            this.Write(@"</span><span style='font-family: ""Calibri"",""sans-serif""'> </span>
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td valign=""top"" style=""padding: 0cm 3.6pt 0cm 0cm"">
-                        <p class=""Normal"">
-                            <b><span style='font-family: ""Calibri"",""sans-serif""; color: #3D5277'>Shelveset: </span></b>
-                        </p>
-                    </td>
-                    <td valign=""top"" style=""padding: 0cm 3.6pt 0cm 0cm"">
-                        <p class=""Normal"">
-                            <span style='font-family: ""Calibri"",""sans-serif""; color: #3D5277'>
-                            <a href=");
+            this.Write("</td>\r\n        </tr>\r\n        <tr>\r\n            <td class=\"bold\">Shelveset:</td>\r" +
+                    "\n            <td><a href=");
             
-            #line 72 "C:\Users\jeremy\Documents\Visual Studio 2010\Projects\CodeReviewHelpers\QuickReview\HtmlTemplate.tt"
+            #line 99 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.shelvesetData.GetShelvesetPath()));
             
             #line default
             #line hidden
             this.Write(" target=\"_blank\">");
             
-            #line 72 "C:\Users\jeremy\Documents\Visual Studio 2010\Projects\CodeReviewHelpers\QuickReview\HtmlTemplate.tt"
+            #line 99 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.shelvesetData.Owner + "\\" + this.shelvesetData.Name));
             
             #line default
             #line hidden
-            this.Write(@"</a> 
-                            </span>                           
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td valign=""top"" style=""padding: 0cm 3.6pt 0cm 0cm"">
-                        <p class=""Normal"">
-                            <b><span style='font-family: ""Calibri"",""sans-serif""; color: #3D5277'>Comment: </span></b>
-                        </p>
-                    </td>
-                    <td valign=""top"" style=""padding: 0cm 3.6pt 0cm 0cm"">
-                        <p class=""Normal"">
-                            <span style='font-family: ""Calibri"",""sans-serif""; color: #3D5277'>");
+            this.Write("</a></td>\r\n        </tr>\r\n        <tr>\r\n            <td class=\"bold\">Comment:</td" +
+                    ">\r\n            <td>");
             
-            #line 85 "C:\Users\jeremy\Documents\Visual Studio 2010\Projects\CodeReviewHelpers\QuickReview\HtmlTemplate.tt"
+            #line 103 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.shelvesetData.Comment));
             
             #line default
             #line hidden
-            this.Write(@"</span>                            
-                        </p>
-                    </td>
-                </tr>                
-            </table>
+            this.Write("</td>\r\n        </tr>\r\n        <tr>\r\n            <td class=\"bold\">Work items:</td>" +
+                    "\r\n        </tr>\r\n    </table>\r\n\r\n    <table class=\"workItemTable\">\r\n        ");
             
-            <table class=""NormalTable"" border=""0"" cellspacing=""10"" cellpadding=""0"" style=""border-collapse: collapse; -size: 11pt"">                
-                <tr>
-                    <td valign=""top"" style=""padding: 0cm 3.6pt 0cm 0cm"">
-                        <p class=""Normal"">
-                            <b>
-                                <span style='font-family: ""Calibri"",""sans-serif""; color: #3D5277'>Work items: </span>
-                            </b>                            
-                        </p>
-                    </td>
-                    <td valign=""top"" style=""padding: 0cm 3.6pt 0cm 0cm"">
-                        ");
-            
-            #line 101 "C:\Users\jeremy\Documents\Visual Studio 2010\Projects\CodeReviewHelpers\QuickReview\HtmlTemplate.tt"
+            #line 111 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
  foreach(var item in this.shelvesetData.WorkItems)
                         { var workItem = item.WorkItem;
                         
             
             #line default
             #line hidden
-            this.Write(@"                        <tr>
-                            <td valign=""top"">
-                                <p class=""Small"">
-                                    <b>
-                                        <span style='font-family: ""Calibri"",""sans-serif""; color: #3D5277'>
-                                            <a href=");
+            this.Write("        <tr>\r\n            <td>\r\n                <a href=");
             
-            #line 109 "C:\Users\jeremy\Documents\Visual Studio 2010\Projects\CodeReviewHelpers\QuickReview\HtmlTemplate.tt"
+            #line 116 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.shelvesetData.GetWorkItemPath(workItem.Id)));
             
             #line default
             #line hidden
             this.Write(" target=\"_blank\">");
             
-            #line 109 "C:\Users\jeremy\Documents\Visual Studio 2010\Projects\CodeReviewHelpers\QuickReview\HtmlTemplate.tt"
+            #line 116 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(workItem.Id));
             
             #line default
             #line hidden
-            this.Write(@"</a>
-                                        </span>
-                                    </b>
-                                </p>
-                            </td>
-
-                            <td valign=""top"" style=""padding: 0cm 50.6pt 0cm 0cm"">
-                                <p class=""Small""><span style='font-family: ""Calibri"",""sans-serif""; color: #3D5277'>");
+            this.Write("</a>\r\n            </td>\r\n            <td class=\"checkinAction\">");
             
-            #line 116 "C:\Users\jeremy\Documents\Visual Studio 2010\Projects\CodeReviewHelpers\QuickReview\HtmlTemplate.tt"
+            #line 118 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(workItem.Type.Name + " [" + item.CheckinAction + "]"));
             
             #line default
             #line hidden
-            this.Write(@"</span></p>
-                            </td>
-                            
-                            <td valign=""top"" style=""padding: 0cm 1.6pt 0cm 0cm"">
-                                <p class=""Small""><span style='font-family: ""Calibri"",""sans-serif""; color: #3D5277'>");
+            this.Write("</td>\r\n            <td class=\"title\">");
             
-            #line 120 "C:\Users\jeremy\Documents\Visual Studio 2010\Projects\CodeReviewHelpers\QuickReview\HtmlTemplate.tt"
+            #line 119 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(workItem.Title));
             
             #line default
             #line hidden
-            this.Write("</span></p>\r\n                            </td>                            \r\n     " +
-                    "                   </tr>\r\n                        ");
+            this.Write("</td>\r\n        </tr>\r\n            ");
             
-            #line 123 "C:\Users\jeremy\Documents\Visual Studio 2010\Projects\CodeReviewHelpers\QuickReview\HtmlTemplate.tt"
+            #line 121 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("                    </td>\r\n                </tr>\r\n            </table>\r\n         " +
-                    "   \r\n            <p class=\"Normal\">\r\n                <span style=\'font-family: \"" +
-                    "Calibri\",\"sans-serif\"\'>&nbsp;</span></p>\r\n            <table class=\"NormalTable\"" +
-                    " border=\"0\" cellspacing=\"0\" cellpadding=\"0\" style=\"border-collapse: collapse; -s" +
-                    "ize: 11pt\">\r\n                <tr>\r\n                    <td valign=\"top\" style=\"b" +
-                    "order: none; border-right: solid white 1.0pt; background: #3D5277; padding: 1.45" +
-                    "pt 3.6pt 1.45pt 3.6pt\">\r\n                        <p class=\"Normal\" align=\"center" +
-                    "\" style=\"text-align: center\">\r\n                            <b><span style=\'font-" +
-                    "family: \"Calibri\",\"sans-serif\"; color: white\'>Folder</span></b></p>\r\n           " +
-                    "         </td>\r\n                    <td valign=\"top\" style=\"border: none; border" +
-                    "-right: solid white 1.0pt; background: #3D5277; padding: 1.45pt 3.6pt 1.45pt 3.6" +
-                    "pt\">\r\n                        <p class=\"Normal\" align=\"center\" style=\"text-align" +
-                    ": center\">\r\n                            <b><span style=\'font-family: \"Calibri\",\"" +
-                    "sans-serif\"; color: white\'>File name</span></b></p>\r\n                    </td>\r\n" +
-                    "                    <td valign=\"top\" style=\"border: none; border-right: solid wh" +
-                    "ite 1.0pt; background: #3D5277; padding: 1.45pt 3.6pt 1.45pt 3.6pt\">\r\n          " +
-                    "              <p class=\"Normal\" align=\"center\" style=\"text-align: center\">\r\n    " +
-                    "                        <b><span style=\'font-family: \"Calibri\",\"sans-serif\"; col" +
-                    "or: white\'>Status</span></b></p>\r\n                    </td>\r\n                   " +
-                    " <td valign=\"top\" style=\"border: none; border-right: solid white 1.0pt; backgrou" +
-                    "nd: #3D5277; padding: 1.45pt 3.6pt 1.45pt 3.6pt\">\r\n                        <p cl" +
-                    "ass=\"Normal\" align=\"center\" style=\"text-align: center\">\r\n                       " +
-                    "     <b><span style=\'font-family: \"Calibri\",\"sans-serif\"; color: white\'>Link</sp" +
-                    "an></b></p>\r\n                    </td>\r\n                </tr>\r\n                ");
+            this.Write("    </table>\r\n\r\n    &nbsp;\r\n\r\n    <table class=\"changesTable\">\r\n        <tr class" +
+                    "=\"topRow\">\r\n            <td>Folder</td>\r\n            <td>File name</td>\r\n       " +
+                    "     <td>Status</td>\r\n            <td>Link</td>\r\n        </tr>\r\n        ");
             
-            #line 149 "C:\Users\jeremy\Documents\Visual Studio 2010\Projects\CodeReviewHelpers\QuickReview\HtmlTemplate.tt"
+            #line 133 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
  foreach(var change in this.shelvesetData.Changes)
                 { var changeConfig = this.shelvesetData.GetChangeConfig(change);
                 
             
             #line default
             #line hidden
-            this.Write(@" 
-                <tr>
-                    <td valign=""top"" style=""border: none; border-right: solid white 1.0pt; background: #DEE8F2; padding: 1.45pt 3.6pt 1.45pt 3.6pt"">
-                        <p class=""Small"">
-                            <span style='font-family: ""Calibri"",""sans-serif""'>");
+            this.Write(" \r\n        <tr class=\"changesRow\">\r\n            <td class=\"small\">");
             
-            #line 155 "C:\Users\jeremy\Documents\Visual Studio 2010\Projects\CodeReviewHelpers\QuickReview\HtmlTemplate.tt"
+            #line 137 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(change.LocalOrServerFolder));
             
             #line default
             #line hidden
-            this.Write(@"</span></p>
-                    </td>
-                    <td valign=""top"" style=""border: none; border-right: solid white 1.0pt; background: #DEE8F2; padding: 1.45pt 3.6pt 1.45pt 3.6pt"">
-                        <p class=""Normal"">
-                            <span style='font-family: ""Calibri"",""sans-serif""'>");
+            this.Write("</td>\r\n            <td>");
             
-            #line 159 "C:\Users\jeremy\Documents\Visual Studio 2010\Projects\CodeReviewHelpers\QuickReview\HtmlTemplate.tt"
+            #line 138 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(change.FileName));
             
             #line default
             #line hidden
-            this.Write(@"</span></p>
-                    </td>
-                    <td valign=""top"" style=""border: none; border-right: solid white 1.0pt; background: #DEE8F2; padding: 1.45pt 3.6pt 1.45pt 3.6pt"">
-                        <p class=""Normal"">
-                            <span style='font-family: ""Calibri"",""sans-serif""; color: ");
+            this.Write("</td>\r\n            <td><span style=\'color:\'");
             
-            #line 163 "C:\Users\jeremy\Documents\Visual Studio 2010\Projects\CodeReviewHelpers\QuickReview\HtmlTemplate.tt"
+            #line 139 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(changeConfig.Colour));
             
             #line default
             #line hidden
             this.Write("\'>");
             
-            #line 163 "C:\Users\jeremy\Documents\Visual Studio 2010\Projects\CodeReviewHelpers\QuickReview\HtmlTemplate.tt"
+            #line 139 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(changeConfig.Text));
             
             #line default
             #line hidden
-            this.Write(@"</span></p>
-                    </td>
-                    <td valign=""top"" style=""border: none; border-right: solid white 1.0pt; background: #DEE8F2; padding: 1.45pt 3.6pt 1.45pt 3.6pt"">
-                        <p class=""Normal"">
-                            <span style='font-family: ""Calibri"",""sans-serif""'><a href=");
+            this.Write("</span></td>\r\n            <td><a href=");
             
-            #line 167 "C:\Users\jeremy\Documents\Visual Studio 2010\Projects\CodeReviewHelpers\QuickReview\HtmlTemplate.tt"
+            #line 140 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(changeConfig.Link));
             
             #line default
             #line hidden
-            this.Write(" target=\"_blank\">\r\n                               ");
+            this.Write(" target=\"_blank\">");
             
-            #line 168 "C:\Users\jeremy\Documents\Visual Studio 2010\Projects\CodeReviewHelpers\QuickReview\HtmlTemplate.tt"
+            #line 140 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(changeConfig.LinkText));
             
             #line default
             #line hidden
-            this.Write("</a> </span>\r\n                        </p>\r\n                    </td>            " +
-                    "              \r\n                </tr>                            \r\n             " +
-                    "   ");
+            this.Write("</a>\r\n            </td>\r\n        </tr>\r\n            ");
             
-            #line 172 "C:\Users\jeremy\Documents\Visual Studio 2010\Projects\CodeReviewHelpers\QuickReview\HtmlTemplate.tt"
+            #line 143 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("\r\n            </table>\r\n            <p class=\"Normal\">&nbsp;</p>\r\n        </div>\r" +
-                    "\n    </p>    \r\n</body>\r\n</HTML>\r\n");
+            this.Write("    </table>    \r\n    \r\n     &nbsp;\r\n</body>\r\n</html>\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }

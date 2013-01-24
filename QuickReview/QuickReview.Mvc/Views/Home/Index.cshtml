@@ -31,10 +31,10 @@
                         Create
                     </th>
                 </tr>
-            </thead>
+            </thead>            
             @foreach (var shelveset in Model.Shelvesets)
-            {
-                <tr>
+            {                
+                <tr class="shelvesets-row">
                     <td>
                         @Html.Encode(shelveset.Name)
                     </td>
@@ -42,12 +42,17 @@
                         @Html.Encode(String.Format("{0:g}", shelveset.DateCreated))
                     </td>
                     <td>
-                        @Html.ActionLink("Email", "CreateEmail", shelveset, new { @class = "email"})
-                        <span class="or">or</span>
-                        @Html.ActionLink("Open in browser", "Review", shelveset, new { @class = "open-in-browser", target = "_blank" })
+                        @Html.ActionLink("Email", "CreateEmail", shelveset, new { @class = "email"})                                              
                     </td>
-                </tr>
-            }
+                </tr>   
+                <tr class="reportRow">                                        
+                    <td colspan="3">
+                        <div class="reportDiv">
+                            @Html.ActionLink("Generating report...", "PartialShelvesetReportView", shelveset, new { @class = "hidden-report-link" })
+                        </div>
+                    </td>
+                </tr>                         
+            }          
         </table>
     }
     else
@@ -58,7 +63,7 @@
 }
 <script type="text/javascript">
     var anchors = $('a.email');
-    $.each(anchors, function (item, index)
+    $.each(anchors, function (index, item)
     {
         var a = $(this);
         var href = a.attr('href');
@@ -71,6 +76,26 @@
             x.attr('data-href', x.attr('data-href') + '&emailRecipient=' + emailAddress);          
             $('#myForm').get(0).setAttribute('action', x.attr('data-href'));
             $('#myForm').submit();
+        });
+    });
+</script>
+    
+<script type="text/javascript">
+    $(".reportRow").hide();
+    var shelvesetRows = $('.shelvesets-row');
+    $.each(shelvesetRows, function (index, item)
+    {
+        var shelvesetRow = $(this);        
+        shelvesetRow.click(function ()
+        {
+            // toggle the row
+            var reportRow = $(".reportRow").eq(index);
+            reportRow.fadeToggle('fast');
+            
+            // follow the link in the hidden row and populate the review
+            var href = reportRow.find('.hidden-report-link').attr('href');
+            reportRow.find('.reportDiv').load(href);
+            
         });
     });
 </script>
