@@ -147,6 +147,11 @@ ul, ol
     padding: 0;
 }
 
+ul.advantages
+{
+    margin-left: 20px;
+}
+
 li
 {
     line-height: 20px;
