@@ -70,19 +70,6 @@ namespace QuickReview.Mvc.Controllers
                                };
             return this.View(model);
         }
-
-        /// <summary>The create report.</summary>
-        /// <param name="shelveset">The shelveset.</param>
-        /// <param name="emailRecipient">The email recipient.</param>
-        /// <returns>The default view.</returns>
-        [HttpPost]
-        public ActionResult CreateEmail(ShelvesetModel shelveset, string emailRecipient)
-        {
-            // create the email.
-            ShelvesetReport shelvesetReport = new ShelvesetReport(shelveset.Name, shelveset.OwnerName);
-            shelvesetReport.PrepareEmail(emailRecipient);
-            return this.RedirectToAction("Index", new { user = shelveset.OwnerName });
-        }
        
         /// <summary> The create report.  </summary>
         /// <param name="shelveset"> The shelveset. </param>

@@ -12,37 +12,30 @@
 @using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "myForm" }))
 {
     <div id="select-style">
-        <label for="SelectedUser">User:</label>
+        <label>User:</label>
         @Html.DropDownListFor(x => x.SelectedUser, Model.UsersChoice, new { onchange = "this.form.submit()", @class = "dropdown-style" })
     </div>
-
+  
     if (Model.Shelvesets != null && this.Model.Shelvesets.Any())
     {    
         <table id="table-style">
             <thead>
                 <tr>
-                    <th>
-                        Name
-                    </th>
-                    <th>
-                        Date
-                    </th>
-                    <th>
-                        Create
-                    </th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th></th>
                 </tr>
             </thead>            
-            @foreach (var shelveset in Model.Shelvesets)
-            {                
+            @for (int i = 0; i < Model.Shelvesets.Count(); i++)
+            {
+                var shelveset = Model.Shelvesets.ToList()[i];
                 <tr class="shelvesets-row">
+                    <td>@Html.Encode(shelveset.Name)</td>
+                    <td>@Html.Encode(String.Format("{0:g}", shelveset.DateCreated))</td>
                     <td>
-                        @Html.Encode(shelveset.Name)
-                    </td>
-                    <td>
-                        @Html.Encode(String.Format("{0:g}", shelveset.DateCreated))
-                    </td>
-                    <td>
-                        @Html.ActionLink("Email", "CreateEmail", shelveset, new { @class = "email"})                                              
+                        <div id="d_clip_container_@i" style="position:relative">
+                    	    <div id="d_clip_button_@i" class="copyButton">Copy Report</div>
+                	   </div>
                     </td>
                 </tr>   
                 <tr class="reportRow">                                        
@@ -85,17 +78,85 @@
     var shelvesetRows = $('.shelvesets-row');
     $.each(shelvesetRows, function (index, item)
     {
-        var shelvesetRow = $(this);        
+        var shelvesetRow = $(this);
         shelvesetRow.click(function ()
         {
             // toggle the row
             var reportRow = $(".reportRow").eq(index);
-            reportRow.fadeToggle('fast');
+            if (reportRow.is(':hidden'))
+            {
+                // follow the link in the hidden row and populate the review
+                var link = reportRow.find('.hidden-report-link');
+                if (link.length)
+                {
+                    reportRow.find('.reportDiv').load(link.attr('href'));
+                }                             
+            }            
             
-            // follow the link in the hidden row and populate the review
-            var href = reportRow.find('.hidden-report-link').attr('href');
-            reportRow.find('.reportDiv').load(href);
-            
+            reportRow.fadeToggle('fast');            
         });
     });
 </script>
+
+<script type="text/javascript">
+function sendMail(emailAddress, subject)
+{
+	location.href = 'mailto:' + emailAddress + '?subject=' + subject + '&body=%0D%0DPlease hit paste.%0D%0D';
+}
+
+function init_zeroclipboard()
+{
+	var containers = $("div[id^='d_clip_container_']");
+	$.each(containers, function (index, item)
+	{
+	    var a = $(this);
+	    var child = a.children("div[id^='d_clip_button_']");
+	    var shelvesetsName = $.trim($(".shelvesets-row").eq(index).children("td").eq(0).text());
+
+	    var clip = new ZeroClipboard.Client();
+	    ZeroClipboard.setMoviePath('ZeroClipboard10.swf');
+	    clip.setHandCursor(true);
+	    clip.glue(child.attr('id'), a.attr('id'));
+
+	    clip.addEventListener('load', function (client)
+	    {
+	        //alert("Flash movie loaded and ready.");
+	    });
+
+	    clip.addEventListener('mouseDown', function (client)
+	    {
+	        // get the review	        
+	        var reportRow = $(".reportRow").eq(index);
+	        var link = reportRow.find('.hidden-report-link');
+	        // if the link to the report is here then get the report
+	        // otherwise it means the report has already been fetched
+	        if (link.length)
+	        {
+	            $.ajax({
+	                async: false,
+	                type: "GET",
+	                url: link.attr('href'),
+	                success: function (report)
+	                {
+	                    // replace the link with the report so that we don't do it again
+	                    link.replaceWith(report);
+	                    clip.setText(report);	                    
+	                }
+	            });	            
+	        }
+	        else
+	        {
+	            // if the .reportdiv is already populated, simply add it to the clip.
+	            clip.setText(reportRow.find('.reportDiv').html());
+	        }	        
+	    });
+
+	    clip.addEventListener('complete', function (client, text)
+	    {
+	        //alert('Record copied to clipboard.');	        
+	        sendMail($.cookie('emailAddress'), shelvesetsName);
+	    });
+	});
+}
+</script>
+    

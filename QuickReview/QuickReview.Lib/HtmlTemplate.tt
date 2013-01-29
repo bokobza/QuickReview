@@ -87,7 +87,7 @@ table.workItemTable tr td.checkinAction
     </head>
 
 <body>
-
+<div id="report">
     &nbsp;
     <table class="detailsTable">
         <tr>
@@ -136,7 +136,7 @@ table.workItemTable tr td.checkinAction
         <tr class="changesRow">
             <td class="small"><#= change.LocalOrServerFolder #></td>
             <td><#= change.FileName #></td>
-            <td><span style='color:'<#= changeConfig.Colour #>'><#= changeConfig.Text #></span></td>
+            <td><span style='color:<#= changeConfig.Colour #>'><#= changeConfig.Text #></span></td>
             <td><a href=<#= changeConfig.Link #> target="_blank"><#= changeConfig.LinkText #></a>
             </td>
         </tr>
@@ -144,5 +144,6 @@ table.workItemTable tr td.checkinAction
     </table>    
     
      &nbsp;
+</div>
 </body>
 </html>

@@ -35,8 +35,9 @@ namespace QuickReview.Lib
                     "ont-size: 10.0pt;    \r\n}        \r\n       \r\ntable.workItemTable tr td.title\r\n{\r\n " +
                     "   padding: 0cm 1.6pt 0cm 0cm\r\n}\r\n       \r\ntable.workItemTable tr td.checkinActi" +
                     "on\r\n{\r\n    padding: 0cm 50.6pt 0cm 0cm\r\n}\r\n        \r\n</style>\r\n\r\n    </head>\r\n\r\n" +
-                    "<body>\r\n\r\n    &nbsp;\r\n    <table class=\"detailsTable\">\r\n        <tr>\r\n          " +
-                    "  <td class=\"bold\">Team Project Collection:</td>\r\n            <td>");
+                    "<body>\r\n<div id=\"report\">\r\n    &nbsp;\r\n    <table class=\"detailsTable\">\r\n       " +
+                    " <tr>\r\n            <td class=\"bold\">Team Project Collection:</td>\r\n            <" +
+                    "td>");
             
             #line 95 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.shelvesetData.Changes[0].VersionControlServer.TeamProjectCollection.Name));
@@ -136,7 +137,7 @@ namespace QuickReview.Lib
             
             #line default
             #line hidden
-            this.Write("</td>\r\n            <td><span style=\'color:\'");
+            this.Write("</td>\r\n            <td><span style=\'color:");
             
             #line 139 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(changeConfig.Colour));
@@ -171,7 +172,7 @@ namespace QuickReview.Lib
             
             #line default
             #line hidden
-            this.Write("    </table>    \r\n    \r\n     &nbsp;\r\n</body>\r\n</html>\r\n");
+            this.Write("    </table>    \r\n    \r\n     &nbsp;\r\n</div>\r\n</body>\r\n</html>\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }

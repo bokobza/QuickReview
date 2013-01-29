@@ -351,6 +351,7 @@ input
     color: black;
     padding: 6px 8px;
 }
+
 #table-style tr.shelvesets-row:hover
 {
     background-color: #D7D6D7
@@ -403,5 +404,23 @@ input
 
 .reportDiv
 {
-    background-color: white;     
+    background-color: white;    
+}
+
+.copyButton
+{
+     width:200px; 
+     color:white; 
+     text-align:center; 
+     border:1px solid black; 
+     background-image: url(../Images/header.png);     
+     margin:5px 5px 5px 20px; 
+     padding:5px; 
+     cursor:default;    
+     float: right
+}
+
+.copyButton:hover
+{
+     background-image: url(../Images/header-selected.png);
 }
