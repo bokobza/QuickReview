@@ -8,7 +8,8 @@
     @Styles.Render("~/Content/css")    
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jquerycookies")
-    @Scripts.Render("~/bundles/ZeroClipboard")    
+    @Scripts.Render("~/bundles/ZeroClipboard") 
+    @Scripts.Render("~/bundles/custom")    
 </head>
 <body onload="init_zeroclipboard();">
     <div id="container">
@@ -56,28 +57,3 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
-<script type="text/javascript">
-    $(".settings").click(function (event)
-    {
-        // read the cookie
-        $("input#EmailRecipient").val($.cookie('emailAddress'));
-        event.preventDefault();
-        $("fieldset#settings_menu").toggle();
-        event.stopPropagation();
-    });
-
-    $("fieldset#settings_menu").click(function (event)
-    {
-        event.stopPropagation();
-    });
-
-    $(document).click(function ()
-    {
-        if ($("fieldset#settings_menu").is(":visible"))
-        {
-            // save the cookie and hide the menu
-            $.cookie('emailAddress', $("input#EmailRecipient").val(), { expires: 365, path: '/' });
-            $("fieldset#settings_menu").hide();
-        }
-    });    
-</script>

@@ -215,6 +215,7 @@
     <Content Include="Images\header-selected.png" />
     <Content Include="Images\header.png" />
     <Content Include="MvcDiagnostics.aspx" />
+    <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\jquery-1.8.3-vsdoc.js" />
     <Content Include="Scripts\jquery-1.8.3.js" />
     <Content Include="Scripts\jquery-1.8.3.min.js" />
