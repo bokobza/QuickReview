@@ -20,14 +20,15 @@ a:visited
     font-weight: bold
 }  
 
-table
+table.detailsTable, table.workItemTable, table.changesTable
 {
     border-collapse: collapse;          
     border: 0;      
-    margin-left: 10px
+    margin-left: 10px;
+    margin-right: 10px;
 }
      
-td
+table.detailsTable > td, table.workItemTable > td, table.changesTable > td
 {
     border: none; 
     border-right: solid white 1.0pt; 
@@ -62,9 +63,7 @@ table.detailsTable tr td
     padding: 0cm 3.6pt 0cm 0cm;   
     color: #3D5277;              
 }
-        
-      
-        
+     
 table.workItemTable tr td
 {
     padding: 0cm 3.6pt 0cm 0cm;
@@ -87,7 +86,6 @@ table.workItemTable tr td.checkinAction
     </head>
 
 <body>
-<div id="report">
     &nbsp;
     <table class="detailsTable">
         <tr>
@@ -144,6 +142,5 @@ table.workItemTable tr td.checkinAction
     </table>    
     
      &nbsp;
-</div>
 </body>
 </html>

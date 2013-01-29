@@ -334,12 +334,12 @@ input
 
 #table-style
 {
-    font-family: "Lucida Sans Unicode" , "Lucida Grande" , Sans-Serif;
     font-size: 14px;
     border-collapse: collapse;
     text-align: left;
     margin-top: 1em;
-    width: 80%;
+    width: 100%;
+    padding-left: 0px
 }
 #table-style th
 {
@@ -409,7 +409,7 @@ input
 
 .reportDiv
 {
-    background-color: white;    
+    background-color: inherit;    
 }
 
 .copyButton

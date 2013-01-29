@@ -21,25 +21,26 @@ namespace QuickReview.Lib
             this.Write("\r\n<html lang=\"en\">\r\n    <head>\r\n        <!--<link rel=\'stylesheet\' type=\'text/css" +
                     "\'  href=\'report.css\'/>-->\r\n\r\n<style type=\"text/css\">\r\n        \r\na:link\r\n{\r\n    c" +
                     "olor: blue;\r\n}\r\na:visited\r\n{\r\n    color: purple;\r\n}\r\n\r\n.bold\r\n{\r\n    font-weight" +
-                    ": bold\r\n}  \r\n\r\ntable\r\n{\r\n    border-collapse: collapse;          \r\n    border: 0" +
-                    ";      \r\n    margin-left: 10px\r\n}\r\n     \r\ntd\r\n{\r\n    border: none; \r\n    border-" +
-                    "right: solid white 1.0pt; \r\n    margin: 0cm;\r\n    margin-bottom: .0001pt;\r\n    f" +
-                    "ont-size: 12.0pt;\r\n    font-family: \"Calibri\",\"sans-serif\";\r\n}   \r\n     \r\ntr.cha" +
-                    "ngesRow td\r\n{\r\n    background: #DEE8F2;\r\n    padding: 1.45pt 3.6pt 1.45pt 3.6pt;" +
-                    "        \r\n}\r\n        \r\ntr.changesRow td.small\r\n{\r\n    font-size:10.0pt;\r\n}\r\n    " +
-                    "    \r\ntr.topRow td\r\n{\r\n    background: #3D5277;\r\n    padding: 1.45pt 3.6pt 1.45p" +
-                    "t 3.6pt;\r\n    text-align: center;\r\n    color: white;\r\n    font-weight: bold\r\n}\r\n" +
-                    "        \r\ntable.detailsTable tr td\r\n{\r\n    padding: 0cm 3.6pt 0cm 0cm;   \r\n    c" +
-                    "olor: #3D5277;              \r\n}\r\n        \r\n      \r\n        \r\ntable.workItemTable" +
-                    " tr td\r\n{\r\n    padding: 0cm 3.6pt 0cm 0cm;\r\n    color: #3D5277;          \r\n    f" +
-                    "ont-size: 10.0pt;    \r\n}        \r\n       \r\ntable.workItemTable tr td.title\r\n{\r\n " +
-                    "   padding: 0cm 1.6pt 0cm 0cm\r\n}\r\n       \r\ntable.workItemTable tr td.checkinActi" +
-                    "on\r\n{\r\n    padding: 0cm 50.6pt 0cm 0cm\r\n}\r\n        \r\n</style>\r\n\r\n    </head>\r\n\r\n" +
-                    "<body>\r\n<div id=\"report\">\r\n    &nbsp;\r\n    <table class=\"detailsTable\">\r\n       " +
-                    " <tr>\r\n            <td class=\"bold\">Team Project Collection:</td>\r\n            <" +
-                    "td>");
+                    ": bold\r\n}  \r\n\r\ntable.detailsTable, table.workItemTable, table.changesTable\r\n{\r\n " +
+                    "   border-collapse: collapse;          \r\n    border: 0;      \r\n    margin-left: " +
+                    "10px;\r\n    margin-right: 10px;\r\n}\r\n     \r\ntable.detailsTable > td, table.workIte" +
+                    "mTable > td, table.changesTable > td\r\n{\r\n    border: none; \r\n    border-right: s" +
+                    "olid white 1.0pt; \r\n    margin: 0cm;\r\n    margin-bottom: .0001pt;\r\n    font-size" +
+                    ": 12.0pt;\r\n    font-family: \"Calibri\",\"sans-serif\";\r\n}   \r\n     \r\ntr.changesRow " +
+                    "td\r\n{\r\n    background: #DEE8F2;\r\n    padding: 1.45pt 3.6pt 1.45pt 3.6pt;        " +
+                    "\r\n}\r\n        \r\ntr.changesRow td.small\r\n{\r\n    font-size:10.0pt;\r\n}\r\n        \r\ntr" +
+                    ".topRow td\r\n{\r\n    background: #3D5277;\r\n    padding: 1.45pt 3.6pt 1.45pt 3.6pt;" +
+                    "\r\n    text-align: center;\r\n    color: white;\r\n    font-weight: bold\r\n}\r\n        " +
+                    "\r\ntable.detailsTable tr td\r\n{\r\n    padding: 0cm 3.6pt 0cm 0cm;   \r\n    color: #3" +
+                    "D5277;              \r\n}\r\n     \r\ntable.workItemTable tr td\r\n{\r\n    padding: 0cm 3" +
+                    ".6pt 0cm 0cm;\r\n    color: #3D5277;          \r\n    font-size: 10.0pt;    \r\n}     " +
+                    "   \r\n       \r\ntable.workItemTable tr td.title\r\n{\r\n    padding: 0cm 1.6pt 0cm 0cm" +
+                    "\r\n}\r\n       \r\ntable.workItemTable tr td.checkinAction\r\n{\r\n    padding: 0cm 50.6p" +
+                    "t 0cm 0cm\r\n}\r\n        \r\n</style>\r\n\r\n    </head>\r\n\r\n<body>\r\n    &nbsp;\r\n    <tabl" +
+                    "e class=\"detailsTable\">\r\n        <tr>\r\n            <td class=\"bold\">Team Project" +
+                    " Collection:</td>\r\n            <td>");
             
-            #line 95 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
+            #line 93 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.shelvesetData.Changes[0].VersionControlServer.TeamProjectCollection.Name));
             
             #line default
@@ -47,14 +48,14 @@ namespace QuickReview.Lib
             this.Write("</td>\r\n        </tr>\r\n        <tr>\r\n            <td class=\"bold\">Shelveset:</td>\r" +
                     "\n            <td><a href=");
             
-            #line 99 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
+            #line 97 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.shelvesetData.GetShelvesetPath()));
             
             #line default
             #line hidden
             this.Write(" target=\"_blank\">");
             
-            #line 99 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
+            #line 97 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.shelvesetData.Owner + "\\" + this.shelvesetData.Name));
             
             #line default
@@ -62,7 +63,7 @@ namespace QuickReview.Lib
             this.Write("</a></td>\r\n        </tr>\r\n        <tr>\r\n            <td class=\"bold\">Comment:</td" +
                     ">\r\n            <td>");
             
-            #line 103 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
+            #line 101 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.shelvesetData.Comment));
             
             #line default
@@ -70,7 +71,7 @@ namespace QuickReview.Lib
             this.Write("</td>\r\n        </tr>\r\n        <tr>\r\n            <td class=\"bold\">Work items:</td>" +
                     "\r\n        </tr>\r\n    </table>\r\n\r\n    <table class=\"workItemTable\">\r\n        ");
             
-            #line 111 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
+            #line 109 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
  foreach(var item in this.shelvesetData.WorkItems)
                         { var workItem = item.WorkItem;
                         
@@ -79,35 +80,35 @@ namespace QuickReview.Lib
             #line hidden
             this.Write("        <tr>\r\n            <td>\r\n                <a href=");
             
-            #line 116 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
+            #line 114 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.shelvesetData.GetWorkItemPath(workItem.Id)));
             
             #line default
             #line hidden
             this.Write(" target=\"_blank\">");
             
-            #line 116 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
+            #line 114 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(workItem.Id));
             
             #line default
             #line hidden
             this.Write("</a>\r\n            </td>\r\n            <td class=\"checkinAction\">");
             
-            #line 118 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
+            #line 116 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(workItem.Type.Name + " [" + item.CheckinAction + "]"));
             
             #line default
             #line hidden
             this.Write("</td>\r\n            <td class=\"title\">");
             
-            #line 119 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
+            #line 117 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(workItem.Title));
             
             #line default
             #line hidden
             this.Write("</td>\r\n        </tr>\r\n            ");
             
-            #line 121 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
+            #line 119 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
  } 
             
             #line default
@@ -116,7 +117,7 @@ namespace QuickReview.Lib
                     "=\"topRow\">\r\n            <td>Folder</td>\r\n            <td>File name</td>\r\n       " +
                     "     <td>Status</td>\r\n            <td>Link</td>\r\n        </tr>\r\n        ");
             
-            #line 133 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
+            #line 131 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
  foreach(var change in this.shelvesetData.Changes)
                 { var changeConfig = this.shelvesetData.GetChangeConfig(change);
                 
@@ -125,54 +126,54 @@ namespace QuickReview.Lib
             #line hidden
             this.Write(" \r\n        <tr class=\"changesRow\">\r\n            <td class=\"small\">");
             
-            #line 137 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
+            #line 135 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(change.LocalOrServerFolder));
             
             #line default
             #line hidden
             this.Write("</td>\r\n            <td>");
             
-            #line 138 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
+            #line 136 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(change.FileName));
             
             #line default
             #line hidden
             this.Write("</td>\r\n            <td><span style=\'color:");
             
-            #line 139 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
+            #line 137 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(changeConfig.Colour));
             
             #line default
             #line hidden
             this.Write("\'>");
             
-            #line 139 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
+            #line 137 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(changeConfig.Text));
             
             #line default
             #line hidden
             this.Write("</span></td>\r\n            <td><a href=");
             
-            #line 140 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
+            #line 138 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(changeConfig.Link));
             
             #line default
             #line hidden
             this.Write(" target=\"_blank\">");
             
-            #line 140 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
+            #line 138 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(changeConfig.LinkText));
             
             #line default
             #line hidden
             this.Write("</a>\r\n            </td>\r\n        </tr>\r\n            ");
             
-            #line 143 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
+            #line 141 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("    </table>    \r\n    \r\n     &nbsp;\r\n</div>\r\n</body>\r\n</html>\r\n");
+            this.Write("    </table>    \r\n    \r\n     &nbsp;\r\n</body>\r\n</html>\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }
