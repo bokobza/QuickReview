@@ -23,22 +23,22 @@ namespace QuickReview.Lib
                     "olor: blue;\r\n}\r\na:visited\r\n{\r\n    color: purple;\r\n}\r\n\r\n.bold\r\n{\r\n    font-weight" +
                     ": bold\r\n}  \r\n\r\ntable.detailsTable, table.workItemTable, table.changesTable\r\n{\r\n " +
                     "   border-collapse: collapse;          \r\n    border: 0;      \r\n    margin-left: " +
-                    "10px;\r\n    margin-right: 10px;\r\n}\r\n     \r\ntable.detailsTable > td, table.workIte" +
-                    "mTable > td, table.changesTable > td\r\n{\r\n    border: none; \r\n    border-right: s" +
-                    "olid white 1.0pt; \r\n    margin: 0cm;\r\n    margin-bottom: .0001pt;\r\n    font-size" +
-                    ": 12.0pt;\r\n    font-family: \"Calibri\",\"sans-serif\";\r\n}   \r\n     \r\ntr.changesRow " +
-                    "td\r\n{\r\n    background: #DEE8F2;\r\n    padding: 1.45pt 3.6pt 1.45pt 3.6pt;        " +
-                    "\r\n}\r\n        \r\ntr.changesRow td.small\r\n{\r\n    font-size:10.0pt;\r\n}\r\n        \r\ntr" +
-                    ".topRow td\r\n{\r\n    background: #3D5277;\r\n    padding: 1.45pt 3.6pt 1.45pt 3.6pt;" +
-                    "\r\n    text-align: center;\r\n    color: white;\r\n    font-weight: bold\r\n}\r\n        " +
-                    "\r\ntable.detailsTable tr td\r\n{\r\n    padding: 0cm 3.6pt 0cm 0cm;   \r\n    color: #3" +
-                    "D5277;              \r\n}\r\n     \r\ntable.workItemTable tr td\r\n{\r\n    padding: 0cm 3" +
-                    ".6pt 0cm 0cm;\r\n    color: #3D5277;          \r\n    font-size: 10.0pt;    \r\n}     " +
-                    "   \r\n       \r\ntable.workItemTable tr td.title\r\n{\r\n    padding: 0cm 1.6pt 0cm 0cm" +
-                    "\r\n}\r\n       \r\ntable.workItemTable tr td.checkinAction\r\n{\r\n    padding: 0cm 50.6p" +
-                    "t 0cm 0cm\r\n}\r\n        \r\n</style>\r\n\r\n    </head>\r\n\r\n<body>\r\n    &nbsp;\r\n    <tabl" +
-                    "e class=\"detailsTable\">\r\n        <tr>\r\n            <td class=\"bold\">Team Project" +
-                    " Collection:</td>\r\n            <td>");
+                    "10px;\r\n    margin-right: 10px;\r\n}\r\n     \r\ntable.detailsTable td, table.workItemT" +
+                    "able td, table.changesTable td\r\n{\r\n    border: none; \r\n    border-right: solid w" +
+                    "hite 1.0pt; \r\n    margin: 0cm;\r\n    margin-bottom: .0001pt;\r\n    font-size: 12.0" +
+                    "pt;\r\n    font-family: \"Calibri\",\"sans-serif\";\r\n}   \r\n     \r\ntr.changesRow td\r\n{\r" +
+                    "\n    background: #DEE8F2;\r\n    padding: 1.45pt 3.6pt 1.45pt 3.6pt;        \r\n}\r\n " +
+                    "       \r\ntr.changesRow td.small\r\n{\r\n    font-size:10.0pt;\r\n}\r\n        \r\ntr.topRo" +
+                    "w td\r\n{\r\n    background: #3D5277;\r\n    padding: 1.45pt 3.6pt 1.45pt 3.6pt;\r\n    " +
+                    "text-align: center;\r\n    color: white;\r\n    font-weight: bold\r\n}\r\n        \r\ntabl" +
+                    "e.detailsTable tr td\r\n{\r\n    padding: 0cm 3.6pt 0cm 0cm;   \r\n    color: #3D5277;" +
+                    "              \r\n}\r\n     \r\ntable.workItemTable tr td\r\n{\r\n    padding: 0cm 3.6pt 0" +
+                    "cm 0cm;\r\n    color: #3D5277;          \r\n    font-size: 10.0pt;    \r\n}        \r\n " +
+                    "      \r\ntable.workItemTable tr td.title\r\n{\r\n    padding: 0cm 1.6pt 0cm 0cm\r\n}\r\n " +
+                    "      \r\ntable.workItemTable tr td.checkinAction\r\n{\r\n    padding: 0cm 50.6pt 0cm " +
+                    "0cm\r\n}\r\n        \r\n</style>\r\n\r\n    </head>\r\n\r\n<body>\r\n    &nbsp;\r\n    <table clas" +
+                    "s=\"detailsTable\">\r\n        <tr>\r\n            <td class=\"bold\">Team Project Colle" +
+                    "ction:</td>\r\n            <td>");
             
             #line 93 "C:\Users\jeremy\Documents\CodePlex\QuickReview\QuickReview.Lib\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.shelvesetData.Changes[0].VersionControlServer.TeamProjectCollection.Name));

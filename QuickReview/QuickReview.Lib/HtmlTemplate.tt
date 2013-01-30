@@ -28,7 +28,7 @@ table.detailsTable, table.workItemTable, table.changesTable
     margin-right: 10px;
 }
      
-table.detailsTable > td, table.workItemTable > td, table.changesTable > td
+table.detailsTable td, table.workItemTable td, table.changesTable td
 {
     border: none; 
     border-right: solid white 1.0pt; 
