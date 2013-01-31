@@ -325,17 +325,17 @@ namespace QuickReview.Lib
                     return new ChangeConfig()
                         {
                             Colour = "red",
-                            Text = "undefined, please drop me an email.",
-                            Link = "bokobza@gmail.com",
-                            LinkText = "email"
+                            Text = "undefined, please let me know about this.",
+                            Link = "https://quickreview.codeplex.com/discussions",
+                            LinkText = "open"
                         };
                 default:
                     return new ChangeConfig()
                         {
                             Colour = "red",
-                            Text = "undefined, please drop me an email.",
-                            Link = "bokobza@gmail.com",
-                            LinkText = "email"
+                            Text = "undefined, please let me know about this",
+                            Link = "https://quickreview.codeplex.com/discussions",
+                            LinkText = "open"
                         };
             }
         }
