@@ -424,8 +424,3 @@ input
      cursor:default;    
      float: right
 }
-
-.copyButton:hover
-{
-     background-image: url(../Images/header-selected.png);
-}

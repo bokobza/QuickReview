@@ -33,7 +33,7 @@
                     <td>@Html.Encode(shelveset.Name)</td>
                     <td>@Html.Encode(String.Format("{0:g}", shelveset.DateCreated))</td>
                     <td>
-                        <div id="d_clip_container_@i" style="position:relative">
+                        <div id="d_clip_container_@i" style="position:relative" onmouseover="toClipboard(@i, $(this))">
                     	    <div id="d_clip_button_@i" class="copyButton">Copy Report</div>
                 	   </div>
                     </td>

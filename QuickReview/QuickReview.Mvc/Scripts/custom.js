@@ -53,64 +53,56 @@ $(function ()
 });
 
 function init_zeroclipboard()
+{    
+    ZeroClipboard.setMoviePath('ZeroClipboard10.swf');    
+}
+
+function toClipboard(index, container)
 {
-    var containers = $("div[id^='d_clip_container_']");
-    $.each(containers, function (index, item)
+    var clip = new ZeroClipboard.Client();
+    clip.setHandCursor(false);
+
+    // set the text
+    var reportRow = $(".reportRow").eq(index);
+    var link = reportRow.find('.hidden-report-link');
+    // if the link to the report is here then get the report
+    // otherwise it means the report has already been fetched
+    if (link.length)
     {
-        var a = $(this);
-        var child = a.children("div[id^='d_clip_button_']");
-        var shelvesetsName = $.trim($(".shelvesets-row").eq(index).children("td").eq(0).text());
-
-        var clip = new ZeroClipboard.Client();
-        ZeroClipboard.setMoviePath('ZeroClipboard10.swf');
-        clip.setHandCursor(true);
-        clip.glue(child.attr('id'), a.attr('id'));
-
-        clip.addEventListener('load', function (client)
-        {
-            //alert("Flash movie loaded and ready.");
-        });
-
-        clip.addEventListener('mouseDown', function (client)
-        {
-            // get the review	        
-            var reportRow = $(".reportRow").eq(index);
-            var link = reportRow.find('.hidden-report-link');
-            // if the link to the report is here then get the report
-            // otherwise it means the report has already been fetched
-            if (link.length)
+        $.ajax({
+            async: false,
+            type: "GET",
+            url: link.attr('href'),
+            success: function (report)
             {
-                $.ajax({
-                    async: false,
-                    type: "GET",
-                    url: link.attr('href'),
-                    success: function (report)
-                    {
-                        // replace the link with the report so that we don't do it again
-                        link.replaceWith(report);
-                        clip.setText(report);
-                    }
-                });
-            }
-            else
-            {
-                // if the .reportdiv is already populated, simply add it to the clip.
-                clip.setText(reportRow.find('.reportDiv').html());
+                // replace the link with the report so that we don't do it again
+                link.replaceWith(report);
+                clip.setText(report);
             }
         });
+    }
+    else
+    {
+        // if the .reportdiv is already populated, simply add it to the clip.
+        clip.setText(reportRow.find('.reportDiv').html());
+    }
 
-        clip.addEventListener('complete', function (client, text)
-        {
-            //alert('Record copied to clipboard.');	        
-            sendMail($.cookie('emailAddress'), shelvesetsName);
-        });
+    var shelvesetsName = $.trim($(".shelvesets-row").eq(index).children("td").eq(0).text());
+    clip.addEventListener('complete', function (client, text)
+    {
+        //alert('Record copied to clipboard.');	                
+        sendMail($.cookie('emailAddress'), shelvesetsName);
     });
+
+    var child = container.children("div[id^='d_clip_button_']");
+    clip.glue(child.attr('id'), container.attr('id'));
 }
 
 function sendMail(emailAddress, subject)
 {
     location.href = 'mailto:' + emailAddress + '?subject=Code review for shelveset [' + subject + ']&body=%0D%0DPlease hit paste.%0D%0D';
 }
+
 
 /*
 $(function ()
