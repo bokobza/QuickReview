@@ -185,6 +185,52 @@ namespace QuickReview.Lib
                             this.ProjectId),
                         LinkText = "diff"
                     };
+                case ChangeType.Edit | ChangeType.Merge:
+                    return new ChangeConfig()
+                    {
+                        Colour = "black",
+                        Text = "merge, edit",
+                        Link = string.Format(
+                            Resource.DifferenceUri,
+                            ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
+                            change.SourceServerItem ?? change.ServerItem,
+                            change.Version,
+                            change.ServerItem,
+                            System.Web.HttpUtility.UrlEncode(this.Name),
+                            this.Owner,
+                            this.ProjectId),
+                        LinkText = "diff"
+                    };
+                case ChangeType.Edit | ChangeType.Encoding | ChangeType.Merge:
+                    return new ChangeConfig()
+                    {
+                        Colour = "black",
+                        Text = "merge, type, edit",
+                        Link = string.Format(
+                            Resource.DifferenceUri,
+                            ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
+                            change.SourceServerItem ?? change.ServerItem,
+                            change.Version,
+                            change.ServerItem,
+                            System.Web.HttpUtility.UrlEncode(this.Name),
+                            this.Owner,
+                            this.ProjectId),
+                        LinkText = "diff"
+                    };
+                case ChangeType.Merge:
+                    return new ChangeConfig()
+                    {
+                        Colour = "black",
+                        Text = "merge",
+                        Link = string.Format(
+                            Resource.ViewSourceUri,
+                            ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
+                            change.ServerItem,
+                            System.Web.HttpUtility.UrlEncode(this.Name),
+                            this.Owner,
+                            this.ProjectId),
+                        LinkText = "view"
+                    };
                 case ChangeType.Delete:
                     return new ChangeConfig()
                         {
@@ -199,6 +245,20 @@ namespace QuickReview.Lib
                                 this.ProjectId),
                             LinkText = "view"
                         };
+                case ChangeType.Delete | ChangeType.Merge:
+                    return new ChangeConfig()
+                    {
+                        Colour = "red",
+                        Text = "merge, delete",
+                        Link = string.Format(
+                            Resource.ViewSourceUri,
+                            ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
+                            change.ServerItem,
+                            System.Web.HttpUtility.UrlEncode(this.Name),
+                            this.Owner,
+                            this.ProjectId),
+                        LinkText = "view"
+                    };
                 case ChangeType.Encoding | ChangeType.Branch:
                     return new ChangeConfig()
                         {
@@ -213,6 +273,20 @@ namespace QuickReview.Lib
                                 this.ProjectId),
                             LinkText = "view"
                         };
+                case ChangeType.Merge | ChangeType.Branch:
+                    return new ChangeConfig()
+                    {
+                        Colour = "black",
+                        Text = "merge, branch",
+                        Link = string.Format(
+                            Resource.ViewSourceUri,
+                            ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
+                            change.ServerItem,
+                            System.Web.HttpUtility.UrlEncode(this.Name),
+                            this.Owner,
+                            this.ProjectId),
+                        LinkText = "view"
+                    };
                 case ChangeType.Rename:
                     return new ChangeConfig()
                         {
@@ -244,8 +318,7 @@ namespace QuickReview.Lib
 
                 case ChangeType.None:
                 case ChangeType.Encoding:                
-                case ChangeType.Branch:
-                case ChangeType.Merge:
+                case ChangeType.Branch:                
                 case ChangeType.Lock:
                 case ChangeType.Rollback:
                 case ChangeType.SourceRename:
