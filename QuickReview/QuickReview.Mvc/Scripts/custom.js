@@ -1,8 +1,8 @@
 ﻿$(function ()
 {
     // initializes ZeroClipboard
-    ZeroClipboard.setMoviePath('ZeroClipboard10.swf');  
-    
+    ZeroClipboard.setMoviePath('ZeroClipboard10.swf');
+
     $(".settings").click(function (event)
     {
         // read the cookie
@@ -32,9 +32,19 @@
     {
         $(item).click(function ()
         {
-            toggleReportRow(index);
+            try
+            {
+                toggleReportRow(index);
+                toggleBlackBorder($(item).parent());
+            }
+            catch (e)
+            {
+                alert(e.message);
+            }
         });
     });
+
+
 });
 
 function toggleReportRow(index)
@@ -67,6 +77,18 @@ function toggleReportRow(index)
     else
     {
         reportRow.fadeToggle('fast');
+    }
+}
+
+function toggleBlackBorder(item)
+{
+    if ($(item).hasClass('black-border'))
+    {
+        $(item).removeClass('black-border');
+    }
+    else
+    {
+        $(item).addClass('black-border');    
     }    
 }
 

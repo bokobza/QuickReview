@@ -29,6 +29,7 @@
             @for (int i = 0; i < Model.Shelvesets.Count(); i++)
             {
                 var shelveset = Model.Shelvesets.ToList()[i];
+                <tbody>
                 <tr class="shelvesets-row">
                     <td>@Html.Encode(shelveset.Name)</td>
                     <td>@Html.Encode(String.Format("{0:g}", shelveset.DateCreated))</td>
@@ -44,8 +45,9 @@
                             @Html.ActionLink("Generating report...", "PartialShelvesetReportView", shelveset, new { @class = "hidden-report-link" })
                         </div>
                     </td>
-                </tr>                         
-            }          
+                </tr>                        
+                </tbody> 
+                }          
         </table>
     }
     else

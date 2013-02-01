@@ -25,7 +25,7 @@ namespace QuickReview.Mvc.Controllers
         /// <returns>The default view.</returns>
         public ActionResult Index(string user)
         {            
-            TfsConnect.Initialize(ConfigurationManager.AppSettings.Get("teamProjectUrl"));
+            TfsConnect.Initialize(ConfigurationManager.AppSettings.Get("teamProjectUrl"), true);
 
             string selectedUser = user ?? User.Identity.Name;
 

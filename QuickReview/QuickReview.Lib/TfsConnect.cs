@@ -11,7 +11,9 @@ namespace QuickReview.Lib
 {
     using System;
     using System.Collections.Generic;
+    using System.Configuration;
     using System.Linq;
+    using System.Web.Configuration;
 
     using Microsoft.TeamFoundation;
     using Microsoft.TeamFoundation.Client;
@@ -52,7 +54,8 @@ namespace QuickReview.Lib
         /// Initializes the tool.
         /// </summary>
         /// <param name="uriAddress"> The URI Address. </param>
-        public static void Initialize(string uriAddress)
+        /// <param name="forWeb">True if this is called from a web client.</param>
+        public static void Initialize(string uriAddress, bool forWeb = false)
         {
             tfsAddress = new Uri(uriAddress);
 
@@ -67,6 +70,19 @@ namespace QuickReview.Lib
                 string projectId;
                 node.Resource.Properties.TryGetValue("ProjectId", out projectId);
                 ProjectId = projectId;
+            }
+
+            if (forWeb)
+            {
+                // create new cache folder for Tfs (used for workItems).
+                Configuration connectionConfiguration = WebConfigurationManager.OpenWebConfiguration("~");
+                var settings = connectionConfiguration.AppSettings.Settings;
+                if (settings["WorkItemTrackingCacheRoot"] == null)
+                {
+                    settings.Add("WorkItemTrackingCacheRoot", System.IO.Path.GetTempPath() + "TFSClientCache");
+                    connectionConfiguration.Save(ConfigurationSaveMode.Modified);
+                    ConfigurationManager.RefreshSection("appSettings");
+                }
             }
 
             // gets the owner name from the environment

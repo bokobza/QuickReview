@@ -4,6 +4,8 @@
     margin: 0;
     padding: 0;
     height: 100%;
+    overflow-x: hidden;
+    overflow-y:scroll;
 }
 
 body
@@ -423,4 +425,11 @@ input
      padding:5px; 
      cursor:default;    
      float: right
+}
+
+.black-border
+{
+    border: 3px;
+    border-color: black;
+    border-style: solid;
 }
