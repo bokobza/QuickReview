@@ -31,7 +31,13 @@
                 var shelveset = Model.Shelvesets.ToList()[i];
                 <tbody>
                 <tr class="shelvesets-row">
-                    <td>@Html.Encode(shelveset.Name)</td>
+                    <td>@Html.Encode(shelveset.Name)
+                        <div id="facebookG_@i">
+                            <div id="blockG_1" class="facebook_blockG"></div>
+                            <div id="blockG_2" class="facebook_blockG"></div>
+                            <div id="blockG_3" class="facebook_blockG"></div>
+                        </div>
+                    </td>
                     <td>@Html.Encode(String.Format("{0:g}", shelveset.DateCreated))</td>
                     <td>
                         <div id="d_clip_container_@i" style="position:relative" onmouseover="toClipboard(@i, $(this))">

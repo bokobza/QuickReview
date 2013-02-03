@@ -28,6 +28,7 @@
     });
 
     $(".reportRow").hide();
+    $("div[id^='facebookG_']").hide();
     $.each($('.shelvesets-row'), function (index, item)
     {
         $(item).click(function ()
@@ -57,6 +58,7 @@ function toggleReportRow(index)
         var link = reportRow.find('.hidden-report-link');
         if (link.length)
         {
+            $("#facebookG_" + index).show();
             $.ajax({
                 async: true,
                 type: "GET",
@@ -66,6 +68,7 @@ function toggleReportRow(index)
                     // replace the link with the report so that we don't do it again
                     link.replaceWith(report);
                     reportRow.fadeToggle('fast');
+                    $("#facebookG_" + index).hide();
                 }
             });
         }
