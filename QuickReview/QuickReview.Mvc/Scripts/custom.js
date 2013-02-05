@@ -36,7 +36,7 @@
             try
             {
                 toggleReportRow(index);
-                toggleBlackBorder($(item).parent());
+                toggleBlackBorder($(item).parent());                
             }
             catch (e)
             {
@@ -128,8 +128,18 @@ function toClipboard(index, container)
     var shelvesetsName = $.trim($(".shelvesets-row").eq(index).children("td").eq(0).text());
     clip.addEventListener('complete', function (client, text)
     {
-        //alert('Record copied to clipboard.');	                
-        sendMail($.cookie('emailAddress'), shelvesetsName);
+        //alert('Record copied to clipboard.');	
+        var emailAddress, cookieEmail;
+        cookieEmail = $.cookie('emailAddress');
+        if (cookieEmail && cookieEmail.length)
+        {
+            emailAddress = $.cookie('emailAddress');
+        }
+        else
+        {
+            emailAddress = 'Settings -> Default Email Recipient';
+        }
+        sendMail(emailAddress, shelvesetsName);
     });
 
     var child = container.children("div[id^='d_clip_button_']");
@@ -138,5 +148,5 @@ function toClipboard(index, container)
 
 function sendMail(emailAddress, subject)
 {
-    location.href = 'mailto:' + emailAddress + '?subject=Code review for shelveset [' + subject + ']&body=%0D%0DPlease hit paste.%0D%0D';
+    window.location = 'mailto:' + emailAddress + '?subject=Code review for shelveset [' + subject + ']&body=%0D%0DPlease hit paste.%0D%0D';
 }

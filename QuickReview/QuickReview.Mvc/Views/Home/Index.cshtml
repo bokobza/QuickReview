@@ -3,6 +3,7 @@
 @using QuickReview.Mvc.Models
 @{    
     ViewBag.Message = "Choose the shelveset you want to review.";
+    ViewBag.Title = "QuickReview Home";
 }
 
 <hgroup class="title">
@@ -41,7 +42,7 @@
                     <td>@Html.Encode(String.Format("{0:g}", shelveset.DateCreated))</td>
                     <td>
                         <div id="d_clip_container_@i" style="position:relative" onmouseover="toClipboard(@i, $(this))">
-                    	    <div id="d_clip_button_@i" class="copyButton">Copy Report</div>
+                    	    <div id="d_clip_button_@i" class="copyButton">Copy to clipboard</div>
                 	   </div>
                     </td>
                 </tr>   
