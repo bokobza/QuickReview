@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DifferenceUri" xml:space="preserve">
-    <value>{0}/UI/Pages/Scc/Difference.aspx?opath={1}&amp;ocs={2}&amp;mpath={3}&amp;mss={4};{5}&amp;pguid={6}</value>
+    <value>{0}/UI/Pages/Scc/Difference.aspx?opath={1}&amp;ocs={2}&amp;mpath={3}&amp;mss={4}%3B{5}&amp;pguid={6}</value>
   </data>
   <data name="ViewShelvesetUri" xml:space="preserve">
-    <value>{0}/UI/Pages/Scc/ViewShelveset.aspx?shelveset={1};{2}&amp;pguid={3}</value>
+    <value>{0}/UI/Pages/Scc/ViewShelveset.aspx?shelveset={1}%3B{2}&amp;pguid={3}</value>
   </data>
   <data name="ViewSourceUri" xml:space="preserve">
-    <value>{0}/UI/Pages/Scc/ViewSource.aspx?path={1}&amp;ss={2};{3}&amp;pguid={4}</value>
+    <value>{0}/UI/Pages/Scc/ViewSource.aspx?path={1}&amp;ss={2}%3B{3}&amp;pguid={4}</value>
   </data>
   <data name="ViewWorkItemUri" xml:space="preserve">
     <value>{0}/UI/Pages/WorkItems/WorkItemEdit.aspx?id={1}&amp;pguid={2}</value>

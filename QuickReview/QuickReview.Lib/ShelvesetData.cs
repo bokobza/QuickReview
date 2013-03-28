@@ -8,6 +8,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace QuickReview.Lib
 {
+    using System;
     using System.Configuration;
 
     using Microsoft.TeamFoundation.VersionControl.Client;
@@ -104,6 +105,13 @@ namespace QuickReview.Lib
         /// <returns>The <see cref="ChangeConfig"/> object to use ion the template.</returns>
         public ChangeConfig GetChangeConfig(PendingChange change)
         {
+            string projectId = this.ProjectId;
+            string owner = Uri.EscapeDataString(this.Owner);
+            string shelvesetName = Uri.EscapeDataString(this.Name);
+            string serverItem = change.ServerItem != null ? Uri.EscapeDataString(change.ServerItem) : null;
+            string sourceServerItem = change.SourceServerItem != null ? Uri.EscapeDataString(change.SourceServerItem) : null;
+            int version = change.Version;
+
             switch (change.ChangeType)
             {
                 case ChangeType.Add | ChangeType.Edit | ChangeType.Encoding:
@@ -115,10 +123,10 @@ namespace QuickReview.Lib
                             Link = string.Format(
                                 Resource.ViewSourceUri,
                                 ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
-                                change.ServerItem,
-                                System.Web.HttpUtility.UrlEncode(this.Name),
-                                this.Owner,
-                                this.ProjectId),
+                                serverItem,
+                                shelvesetName,
+                                owner,
+                                projectId),
                             LinkText = "view"
                         };
                 case ChangeType.Edit:
@@ -129,12 +137,12 @@ namespace QuickReview.Lib
                             Link = string.Format(
                                 Resource.DifferenceUri,
                                 ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
-                                change.SourceServerItem ?? change.ServerItem,
-                                change.Version,
-                                change.ServerItem,
-                                System.Web.HttpUtility.UrlEncode(this.Name),
-                               this.Owner,
-                                this.ProjectId),
+                                sourceServerItem ?? serverItem,
+                                version,
+                                serverItem,
+                                shelvesetName,
+                                owner,
+                                projectId),
                             LinkText = "diff"
                         };
                 case ChangeType.Edit | ChangeType.Rename:
@@ -145,14 +153,30 @@ namespace QuickReview.Lib
                             Link = string.Format(
                                 Resource.DifferenceUri,
                                 ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
-                                change.SourceServerItem,
-                                change.Version,
-                                change.ServerItem,
-                                System.Web.HttpUtility.UrlEncode(this.Name),
-                                this.Owner,
-                                this.ProjectId),
+                                sourceServerItem,
+                                version,
+                                serverItem,
+                                shelvesetName,
+                                owner,
+                                projectId),
                             LinkText = "diff"
                         };
+                case ChangeType.Edit | ChangeType.Rename | ChangeType.Merge:
+                    return new ChangeConfig()
+                    {
+                        Colour = "black",
+                        Text = "merge, rename, edit",
+                        Link = string.Format(
+                            Resource.DifferenceUri,
+                            ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
+                            sourceServerItem,
+                            version,
+                            serverItem,
+                            shelvesetName,
+                            owner,
+                            projectId),
+                        LinkText = "diff"
+                    };
                 case ChangeType.Edit | ChangeType.Rollback:
                     return new ChangeConfig()
                         {
@@ -161,14 +185,28 @@ namespace QuickReview.Lib
                             Link = string.Format(
                                 Resource.DifferenceUri,
                                 ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
-                                change.SourceServerItem ?? change.ServerItem,
-                                change.Version,
-                                change.ServerItem,
-                                System.Web.HttpUtility.UrlEncode(this.Name),
-                                this.Owner,
-                                this.ProjectId),
+                                sourceServerItem ?? serverItem,
+                                version,
+                                serverItem,
+                                shelvesetName,
+                                owner,
+                                projectId),
                             LinkText = "diff"
                         };
+                case ChangeType.Delete | ChangeType.Rollback:
+                    return new ChangeConfig()
+                    {
+                        Colour = "red",
+                        Text = "delete, rollback",
+                        Link = string.Format(
+                                Resource.ViewSourceUri,
+                                ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
+                                serverItem,
+                                shelvesetName,
+                                owner,
+                                projectId),
+                        LinkText = "view"
+                    };
                 case ChangeType.Edit | ChangeType.Undelete:
                     return new ChangeConfig()
                     {
@@ -177,12 +215,12 @@ namespace QuickReview.Lib
                         Link = string.Format(
                             Resource.DifferenceUri,
                             ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
-                            change.SourceServerItem ?? change.ServerItem,
-                            change.Version,
-                            change.ServerItem,
-                            System.Web.HttpUtility.UrlEncode(this.Name),
-                            this.Owner,
-                            this.ProjectId),
+                            sourceServerItem ?? serverItem,
+                            version,
+                            serverItem,
+                            shelvesetName,
+                            owner,
+                            projectId),
                         LinkText = "diff"
                     };
                 case ChangeType.Edit | ChangeType.Merge:
@@ -193,12 +231,12 @@ namespace QuickReview.Lib
                         Link = string.Format(
                             Resource.DifferenceUri,
                             ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
-                            change.SourceServerItem ?? change.ServerItem,
-                            change.Version,
-                            change.ServerItem,
-                            System.Web.HttpUtility.UrlEncode(this.Name),
-                            this.Owner,
-                            this.ProjectId),
+                            sourceServerItem ?? serverItem,
+                            version,
+                            serverItem,
+                            shelvesetName,
+                            owner,
+                            projectId),
                         LinkText = "diff"
                     };
                 case ChangeType.Edit | ChangeType.Encoding | ChangeType.Merge:
@@ -209,12 +247,12 @@ namespace QuickReview.Lib
                         Link = string.Format(
                             Resource.DifferenceUri,
                             ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
-                            change.SourceServerItem ?? change.ServerItem,
-                            change.Version,
-                            change.ServerItem,
-                            System.Web.HttpUtility.UrlEncode(this.Name),
-                            this.Owner,
-                            this.ProjectId),
+                            sourceServerItem ?? serverItem,
+                            version,
+                            serverItem,
+                            shelvesetName,
+                            owner,
+                            projectId),
                         LinkText = "diff"
                     };
                 case ChangeType.Merge:
@@ -225,10 +263,10 @@ namespace QuickReview.Lib
                         Link = string.Format(
                             Resource.ViewSourceUri,
                             ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
-                            change.ServerItem,
-                            System.Web.HttpUtility.UrlEncode(this.Name),
-                            this.Owner,
-                            this.ProjectId),
+                            serverItem,
+                            shelvesetName,
+                            owner,
+                            projectId),
                         LinkText = "view"
                     };
                 case ChangeType.Delete:
@@ -239,10 +277,10 @@ namespace QuickReview.Lib
                             Link = string.Format(
                                 Resource.ViewSourceUri,
                                 ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
-                                change.ServerItem,
-                                System.Web.HttpUtility.UrlEncode(this.Name),
-                                this.Owner,
-                                this.ProjectId),
+                                serverItem,
+                                shelvesetName,
+                                owner,
+                                projectId),
                             LinkText = "view"
                         };
                 case ChangeType.Delete | ChangeType.Merge:
@@ -253,11 +291,41 @@ namespace QuickReview.Lib
                         Link = string.Format(
                             Resource.ViewSourceUri,
                             ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
-                            change.ServerItem,
-                            System.Web.HttpUtility.UrlEncode(this.Name),
-                            this.Owner,
-                            this.ProjectId),
+                            serverItem,
+                            shelvesetName,
+                            owner,
+                            projectId),
                         LinkText = "view"
+                    };
+                case ChangeType.Delete | ChangeType.Merge | ChangeType.Rename:
+                    return new ChangeConfig()
+                    {
+                        Colour = "red",
+                        Text = "merge, delete, rename",
+                        Link = string.Format(
+                            Resource.ViewSourceUri,
+                            ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
+                            serverItem,
+                            shelvesetName,
+                            owner,
+                            projectId),
+                        LinkText = "view"
+                    };
+                case ChangeType.Rename | ChangeType.Merge:
+                    return new ChangeConfig()
+                    {
+                        Colour = "black",
+                        Text = "merge, rename",
+                        Link = string.Format(
+                             Resource.DifferenceUri,
+                             ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
+                             sourceServerItem,
+                             version,
+                             serverItem,
+                             shelvesetName,
+                             owner,
+                             projectId),
+                        LinkText = "diff"
                     };
                 case ChangeType.Encoding | ChangeType.Branch:
                     return new ChangeConfig()
@@ -267,13 +335,14 @@ namespace QuickReview.Lib
                             Link = string.Format(
                                 Resource.ViewSourceUri,
                                 ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
-                                change.ServerItem,
-                                System.Web.HttpUtility.UrlEncode(this.Name),
-                                this.Owner,
-                                this.ProjectId),
+                                serverItem,
+                                shelvesetName,
+                                owner,
+                                projectId),
                             LinkText = "view"
                         };
                 case ChangeType.Merge | ChangeType.Branch:
+                case ChangeType.Merge | ChangeType.Branch | ChangeType.Encoding:
                     return new ChangeConfig()
                     {
                         Colour = "black",
@@ -281,10 +350,10 @@ namespace QuickReview.Lib
                         Link = string.Format(
                             Resource.ViewSourceUri,
                             ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
-                            change.ServerItem,
-                            System.Web.HttpUtility.UrlEncode(this.Name),
-                            this.Owner,
-                            this.ProjectId),
+                            serverItem,
+                            shelvesetName,
+                            owner,
+                            projectId),
                         LinkText = "view"
                     };
                 case ChangeType.Rename:
@@ -295,10 +364,10 @@ namespace QuickReview.Lib
                             Link = string.Format(
                                 Resource.ViewSourceUri,
                                 ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
-                                change.ServerItem,
-                                System.Web.HttpUtility.UrlEncode(this.Name),
-                                this.Owner,
-                                this.ProjectId),
+                                serverItem,
+                                shelvesetName,
+                                owner,
+                                projectId),
                             LinkText = "view"
                         };
                 case ChangeType.Undelete:
@@ -309,25 +378,11 @@ namespace QuickReview.Lib
                             Link = string.Format(
                                 Resource.ViewSourceUri,
                                 ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
-                                change.ServerItem,
-                                System.Web.HttpUtility.UrlEncode(this.Name),
-                                this.Owner,
-                                this.ProjectId),
+                                serverItem,
+                                shelvesetName,
+                                owner,
+                                projectId),
                             LinkText = "view"
-                        };
-
-                case ChangeType.None:
-                case ChangeType.Encoding:                
-                case ChangeType.Branch:                
-                case ChangeType.Lock:
-                case ChangeType.Rollback:
-                case ChangeType.SourceRename:
-                    return new ChangeConfig()
-                        {
-                            Colour = "red",
-                            Text = "undefined, please let me know about this.",
-                            Link = "https://quickreview.codeplex.com/discussions",
-                            LinkText = "open"
                         };
                 default:
                     return new ChangeConfig()
