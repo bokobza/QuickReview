@@ -19,6 +19,14 @@ namespace QuickReview.Lib
     public class ShelvesetData
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="ShelvesetData"/> class
+        /// </summary>
+        public ShelvesetData()
+        {
+            this.TeamWebAccessUrl = ConfigurationManager.AppSettings.Get("teamWebAccessUrl");
+        }
+
+        /// <summary>
         /// Gets or sets the changes included in the shelveset.
         /// </summary>
         /// <value>
@@ -67,6 +75,11 @@ namespace QuickReview.Lib
         public WorkItemCheckinInfo[] WorkItems { get; set; }
 
         /// <summary>
+        /// Gets the link to the Team Web Access URL, from the config
+        /// </summary>
+        public string TeamWebAccessUrl { get; private set; }
+
+        /// <summary>
         /// Gets the url to the shelveset in team web access.
         /// </summary>
         /// <returns>
@@ -76,7 +89,7 @@ namespace QuickReview.Lib
         {
             return string.Format(
                 Resource.ViewShelvesetUri,
-                ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
+                this.TeamWebAccessUrl,
                 System.Web.HttpUtility.UrlEncode(this.Name),
                 this.Owner,
                 this.ProjectId);
@@ -93,7 +106,7 @@ namespace QuickReview.Lib
         {
             return string.Format(
                 Resource.ViewWorkItemUri,
-                ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
+                this.TeamWebAccessUrl,
                 workItemId,
                 this.ProjectId);
         }
@@ -118,279 +131,293 @@ namespace QuickReview.Lib
                 case ChangeType.Add | ChangeType.Encoding:
                     return new ChangeConfig()
                         {
-                            Colour = "green",
+                            Colour = ChangeConfigConstants.Color.Green,
                             Text = "add",
                             Link = string.Format(
                                 Resource.ViewSourceUri,
-                                ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
+                                this.TeamWebAccessUrl,
                                 serverItem,
                                 shelvesetName,
                                 owner,
                                 projectId),
-                            LinkText = "view"
+                            LinkText = ChangeConfigConstants.LinkText.View
                         };
                 case ChangeType.Edit:
                     return new ChangeConfig()
                         {
-                            Colour = "black",
+                            Colour = ChangeConfigConstants.Color.Black,
                             Text = "edit",
                             Link = string.Format(
                                 Resource.DifferenceUri,
-                                ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
+                                this.TeamWebAccessUrl,
                                 sourceServerItem ?? serverItem,
                                 version,
                                 serverItem,
                                 shelvesetName,
                                 owner,
                                 projectId),
-                            LinkText = "diff"
+                            LinkText = ChangeConfigConstants.LinkText.Difference
                         };
                 case ChangeType.Edit | ChangeType.Rename:
                     return new ChangeConfig()
                         {
-                            Colour = "black",
+                            Colour = ChangeConfigConstants.Color.Black,
                             Text = "edit, rename",
                             Link = string.Format(
                                 Resource.DifferenceUri,
-                                ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
+                                this.TeamWebAccessUrl,
                                 sourceServerItem,
                                 version,
                                 serverItem,
                                 shelvesetName,
                                 owner,
                                 projectId),
-                            LinkText = "diff"
+                            LinkText = ChangeConfigConstants.LinkText.Difference
                         };
                 case ChangeType.Edit | ChangeType.Rename | ChangeType.Merge:
                     return new ChangeConfig()
                     {
-                        Colour = "black",
+                        Colour = ChangeConfigConstants.Color.Black,
                         Text = "merge, rename, edit",
                         Link = string.Format(
                             Resource.DifferenceUri,
-                            ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
+                            this.TeamWebAccessUrl,
                             sourceServerItem,
                             version,
                             serverItem,
                             shelvesetName,
                             owner,
                             projectId),
-                        LinkText = "diff"
+                        LinkText = ChangeConfigConstants.LinkText.Difference
                     };
                 case ChangeType.Edit | ChangeType.Rollback:
                     return new ChangeConfig()
                         {
-                            Colour = "black",
+                            Colour = ChangeConfigConstants.Color.Black,
                             Text = "edit, rollback",
                             Link = string.Format(
                                 Resource.DifferenceUri,
-                                ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
+                                this.TeamWebAccessUrl,
                                 sourceServerItem ?? serverItem,
                                 version,
                                 serverItem,
                                 shelvesetName,
                                 owner,
                                 projectId),
-                            LinkText = "diff"
+                            LinkText = ChangeConfigConstants.LinkText.Difference
                         };
                 case ChangeType.Delete | ChangeType.Rollback:
                     return new ChangeConfig()
                     {
-                        Colour = "red",
+                        Colour = ChangeConfigConstants.Color.Red,
                         Text = "delete, rollback",
                         Link = string.Format(
                                 Resource.ViewSourceUri,
-                                ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
+                                this.TeamWebAccessUrl,
                                 serverItem,
                                 shelvesetName,
                                 owner,
                                 projectId),
-                        LinkText = "view"
+                        LinkText = ChangeConfigConstants.LinkText.View
                     };
                 case ChangeType.Edit | ChangeType.Undelete:
                     return new ChangeConfig()
                     {
-                        Colour = "black",
+                        Colour = ChangeConfigConstants.Color.Black,
                         Text = "undelete, edit",
                         Link = string.Format(
                             Resource.DifferenceUri,
-                            ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
+                            this.TeamWebAccessUrl,
                             sourceServerItem ?? serverItem,
                             version,
                             serverItem,
                             shelvesetName,
                             owner,
                             projectId),
-                        LinkText = "diff"
+                        LinkText = ChangeConfigConstants.LinkText.Difference
                     };
                 case ChangeType.Edit | ChangeType.Merge:
                     return new ChangeConfig()
                     {
-                        Colour = "black",
+                        Colour = ChangeConfigConstants.Color.Black,
                         Text = "merge, edit",
                         Link = string.Format(
                             Resource.DifferenceUri,
-                            ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
+                            this.TeamWebAccessUrl,
                             sourceServerItem ?? serverItem,
                             version,
                             serverItem,
                             shelvesetName,
                             owner,
                             projectId),
-                        LinkText = "diff"
+                        LinkText = ChangeConfigConstants.LinkText.Difference
                     };
                 case ChangeType.Edit | ChangeType.Encoding | ChangeType.Merge:
                     return new ChangeConfig()
                     {
-                        Colour = "black",
+                        Colour = ChangeConfigConstants.Color.Black,
                         Text = "merge, type, edit",
                         Link = string.Format(
                             Resource.DifferenceUri,
-                            ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
+                            this.TeamWebAccessUrl,
                             sourceServerItem ?? serverItem,
                             version,
                             serverItem,
                             shelvesetName,
                             owner,
                             projectId),
-                        LinkText = "diff"
+                        LinkText = ChangeConfigConstants.LinkText.Difference
                     };
                 case ChangeType.Merge:
                     return new ChangeConfig()
                     {
-                        Colour = "black",
+                        Colour = ChangeConfigConstants.Color.Black,
                         Text = "merge",
                         Link = string.Format(
                             Resource.ViewSourceUri,
-                            ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
+                            this.TeamWebAccessUrl,
                             serverItem,
                             shelvesetName,
                             owner,
                             projectId),
-                        LinkText = "view"
+                        LinkText = ChangeConfigConstants.LinkText.View
                     };
                 case ChangeType.Delete:
                     return new ChangeConfig()
                         {
-                            Colour = "red",
+                            Colour = ChangeConfigConstants.Color.Red,
                             Text = "delete",
                             Link = string.Format(
                                 Resource.ViewSourceUri,
-                                ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
+                                this.TeamWebAccessUrl,
                                 serverItem,
                                 shelvesetName,
                                 owner,
                                 projectId),
-                            LinkText = "view"
+                            LinkText = ChangeConfigConstants.LinkText.View
                         };
                 case ChangeType.Delete | ChangeType.Merge:
                     return new ChangeConfig()
                     {
-                        Colour = "red",
+                        Colour = ChangeConfigConstants.Color.Red,
                         Text = "merge, delete",
                         Link = string.Format(
                             Resource.ViewSourceUri,
-                            ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
+                            this.TeamWebAccessUrl,
                             serverItem,
                             shelvesetName,
                             owner,
                             projectId),
-                        LinkText = "view"
+                        LinkText = ChangeConfigConstants.LinkText.View
                     };
                 case ChangeType.Delete | ChangeType.Merge | ChangeType.Rename:
                     return new ChangeConfig()
                     {
-                        Colour = "red",
+                        Colour = ChangeConfigConstants.Color.Red,
                         Text = "merge, delete, rename",
                         Link = string.Format(
                             Resource.ViewSourceUri,
-                            ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
+                            this.TeamWebAccessUrl,
                             serverItem,
                             shelvesetName,
                             owner,
                             projectId),
-                        LinkText = "view"
+                        LinkText = ChangeConfigConstants.LinkText.View
                     };
                 case ChangeType.Rename | ChangeType.Merge:
                     return new ChangeConfig()
                     {
-                        Colour = "black",
+                        Colour = ChangeConfigConstants.Color.Black,
                         Text = "merge, rename",
                         Link = string.Format(
                              Resource.DifferenceUri,
-                             ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
+                             this.TeamWebAccessUrl,
                              sourceServerItem,
                              version,
                              serverItem,
                              shelvesetName,
                              owner,
                              projectId),
-                        LinkText = "diff"
+                        LinkText = ChangeConfigConstants.LinkText.Difference
                     };
                 case ChangeType.Encoding | ChangeType.Branch:
                     return new ChangeConfig()
                         {
-                            Colour = "black",
+                            Colour = ChangeConfigConstants.Color.Black,
                             Text = "branch",
                             Link = string.Format(
                                 Resource.ViewSourceUri,
-                                ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
+                                this.TeamWebAccessUrl,
                                 serverItem,
                                 shelvesetName,
                                 owner,
                                 projectId),
-                            LinkText = "view"
+                            LinkText = ChangeConfigConstants.LinkText.View
                         };
                 case ChangeType.Merge | ChangeType.Branch:
                 case ChangeType.Merge | ChangeType.Branch | ChangeType.Encoding:
                     return new ChangeConfig()
                     {
-                        Colour = "black",
+                        Colour = ChangeConfigConstants.Color.Black,
                         Text = "merge, branch",
                         Link = string.Format(
                             Resource.ViewSourceUri,
-                            ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
+                            this.TeamWebAccessUrl,
                             serverItem,
                             shelvesetName,
                             owner,
                             projectId),
-                        LinkText = "view"
+                        LinkText = ChangeConfigConstants.LinkText.View
                     };
                 case ChangeType.Rename:
                     return new ChangeConfig()
                         {
-                            Colour = "black",
+                            Colour = ChangeConfigConstants.Color.Black,
                             Text = "rename",
                             Link = string.Format(
                                 Resource.ViewSourceUri,
-                                ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
+                                this.TeamWebAccessUrl,
                                 serverItem,
                                 shelvesetName,
                                 owner,
                                 projectId),
-                            LinkText = "view"
+                            LinkText = ChangeConfigConstants.LinkText.View
                         };
                 case ChangeType.Undelete:
                     return new ChangeConfig()
                         {
-                            Colour = "green",
+                            Colour = ChangeConfigConstants.Color.Green,
                             Text = "undelete",
                             Link = string.Format(
                                 Resource.ViewSourceUri,
-                                ConfigurationManager.AppSettings.Get("teamWebAccessUrl"),
+                                this.TeamWebAccessUrl,
                                 serverItem,
                                 shelvesetName,
                                 owner,
                                 projectId),
-                            LinkText = "view"
+                            LinkText = ChangeConfigConstants.LinkText.View
                         };
+                case ChangeType.Undelete | ChangeType.Rollback:
+                    return new ChangeConfig()
+                    {
+                        Colour = ChangeConfigConstants.Color.Green,
+                        Text = "undelete, rollback",
+                        Link = string.Format(
+                            Resource.ViewSourceUri,
+                            this.TeamWebAccessUrl,
+                            serverItem,
+                            shelvesetName,
+                            owner,
+                            projectId),
+                        LinkText = ChangeConfigConstants.LinkText.View
+                    };
                 default:
                     return new ChangeConfig()
                         {
-                            Colour = "red",
+                            Colour = ChangeConfigConstants.Color.Red,
                             Text = "undefined, please let me know about this",
                             Link = "https://quickreview.codeplex.com/discussions",
-                            LinkText = "open"
+                            LinkText = ChangeConfigConstants.LinkText.Open
                         };
             }
         }

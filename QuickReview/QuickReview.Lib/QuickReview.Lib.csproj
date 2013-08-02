@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChangeConfig.cs" />
+    <Compile Include="ChangeConfigConstants.cs" />
     <Compile Include="ErrorMessages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
