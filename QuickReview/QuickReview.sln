@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2010
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickReview.Console", "QuickReview.Console\QuickReview.Console.csproj", "{AD89CEBF-E69C-4867-B678-ED433D4F2B7E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickReview.Mvc", "QuickReview.Mvc\QuickReview.Mvc.csproj", "{82F0F74A-AF53-4A0E-9647-AA3E898D4D67}"
