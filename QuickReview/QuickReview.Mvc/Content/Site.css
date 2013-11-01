@@ -315,6 +315,13 @@ input
     display: inline;
     overflow: hidden;
 }
+
+#select-style p
+{
+   display: inline;
+   padding-left: 20px;
+}
+
 .dropdown-style
 {
     font-size: 1.2em;
