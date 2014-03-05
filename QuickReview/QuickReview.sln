@@ -14,9 +14,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{59B0D6
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickReview.Outlook", "QuickReview.Outlook\QuickReview.Outlook.csproj", "{DD1DF3C4-67E0-4C5F-8B1F-FFAB9D7B1DFD}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 4
+		SccNumberOfProjects = 5
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs37
 		SccLocalPath0 = .
@@ -29,6 +31,9 @@ Global
 		SccProjectUniqueName3 = QuickReview.Mvc\\QuickReview.Mvc.csproj
 		SccProjectName3 = QuickReview.Mvc
 		SccLocalPath3 = QuickReview.Mvc
+		SccProjectUniqueName4 = QuickReview.Outlook\\QuickReview.Outlook.csproj
+		SccProjectName4 = QuickReview.Outlook
+		SccLocalPath4 = QuickReview.Outlook
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +74,16 @@ Global
 		{2036B67C-E69F-4BAF-ADD2-05B197AA1635}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{2036B67C-E69F-4BAF-ADD2-05B197AA1635}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{2036B67C-E69F-4BAF-ADD2-05B197AA1635}.Release|x86.ActiveCfg = Release|Any CPU
+		{DD1DF3C4-67E0-4C5F-8B1F-FFAB9D7B1DFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD1DF3C4-67E0-4C5F-8B1F-FFAB9D7B1DFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD1DF3C4-67E0-4C5F-8B1F-FFAB9D7B1DFD}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{DD1DF3C4-67E0-4C5F-8B1F-FFAB9D7B1DFD}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{DD1DF3C4-67E0-4C5F-8B1F-FFAB9D7B1DFD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DD1DF3C4-67E0-4C5F-8B1F-FFAB9D7B1DFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD1DF3C4-67E0-4C5F-8B1F-FFAB9D7B1DFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD1DF3C4-67E0-4C5F-8B1F-FFAB9D7B1DFD}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{DD1DF3C4-67E0-4C5F-8B1F-FFAB9D7B1DFD}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{DD1DF3C4-67E0-4C5F-8B1F-FFAB9D7B1DFD}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

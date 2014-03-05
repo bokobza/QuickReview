@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="Ribbon_Load">
+  <ribbon>
+    <tabs>
+      <tab idMso="TabMail">
+        <group id="QuickReview"
+               label="QuickReview" autoScale="true">
+          <button enabled="true" size="large"
+                  id="shelvesetsButton"
+                  screentip="Shelvesets"
+                  supertip="Click this button to see your shelvesets"
+                  onAction="OnShelvesetsButton"
+                  label="Shelvesets"
+                  getImage="GetImageCallback"/>
+          <separator visible="true" id="separatorLine"/>
+          <editBox enabled="true" id="emailRecipientBox"
+                   screentip="Default email recipient"
+                   supertip="The default email address to send the review to"
+                   visible="true"
+                   getText="EmailRecipientBoxCallbackSetText"
+                   onChange="EmailRecipientBoxCallbackOnChange"/>
+          <button enabled="true"
+                  id="aboutButton"
+                  screentip="About"
+                  onAction="OnAboutButton"
+                  label="About"
+                  getImage="GetImageCallback"/>
+        </group>
+      </tab>
+    </tabs>
+  </ribbon>
+</customUI>
+
