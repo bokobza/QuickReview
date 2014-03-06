@@ -9,9 +9,17 @@
 
 namespace QuickReview.Outlook
 {
+    using System;
+    using System.Collections.Generic;
     using System.Configuration;
+    using System.Linq;
+    using System.Text.RegularExpressions;
+    using System.Windows.Forms;
 
     using QuickReview.Lib;
+
+    using Office = Microsoft.Office.Core;
+    using Outlook = Microsoft.Office.Interop.Outlook;
 
     /// <summary>
     /// The add in 
