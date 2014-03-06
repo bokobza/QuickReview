@@ -26,6 +26,22 @@ namespace QuickReview.Outlook
         }
 
         /// <summary>
+        /// Close the form on escape.
+        /// </summary>
+        /// <param name="msg">the msg</param>
+        /// <param name="keyData">the key data</param>
+        /// <returns></returns>
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        /// <summary>
         /// Handles the TextChanged event of the txtBoxEmailRecipient control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>

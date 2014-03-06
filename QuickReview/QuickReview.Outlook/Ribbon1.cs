@@ -180,7 +180,9 @@ namespace QuickReview.Outlook
         /// <param name="control">The control.</param>
         public void OnAboutButton(Office.IRibbonControl control)
         {
-
+            AboutBox1 about = new AboutBox1();
+            about.richTextBox1.Rtf = Properties.Resources.about1;
+            about.Show();
         }
 
         /// <summary>
