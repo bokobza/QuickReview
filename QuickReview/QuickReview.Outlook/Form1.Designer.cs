@@ -45,11 +45,14 @@
             // 
             // panelShelvesets
             // 
+            this.panelShelvesets.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelShelvesets.AutoScroll = true;
-            this.panelShelvesets.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelShelvesets.BackColor = System.Drawing.SystemColors.Control;
             this.panelShelvesets.Location = new System.Drawing.Point(0, 39);
             this.panelShelvesets.Name = "panelShelvesets";
-            this.panelShelvesets.Size = new System.Drawing.Size(424, 222);
+            this.panelShelvesets.Size = new System.Drawing.Size(484, 222);
             this.panelShelvesets.TabIndex = 2;
             // 
             // txtBoxEmailRecipient
@@ -75,15 +78,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(424, 261);
+            this.ClientSize = new System.Drawing.Size(484, 261);
             this.Controls.Add(this.lblEmailRecipient);
             this.Controls.Add(this.txtBoxEmailRecipient);
             this.Controls.Add(this.panelShelvesets);
             this.Controls.Add(this.lblShelvesetCount);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "My shelvesets";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);

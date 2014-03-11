@@ -12,6 +12,8 @@ namespace QuickReview.Outlook
     using System;
     using System.Windows.Forms;
 
+    using QuickReview.Outlook.Properties;
+
     /// <summary>
     /// The form.
     /// </summary>
@@ -48,8 +50,8 @@ namespace QuickReview.Outlook
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void TxtBoxEmailRecipient_TextChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.EmailRecipient = ((TextBox)sender).Text;
-            Properties.Settings.Default.Save();
+            Settings.Default.EmailRecipient = ((TextBox)sender).Text;
+            Settings.Default.Save();
         }
 
         /// <summary>
@@ -59,8 +61,10 @@ namespace QuickReview.Outlook
         /// <param name="e">The <see cref="FormClosedEventArgs"/> instance containing the event data.</param>
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Properties.Settings.Default.WindowsLocation = this.Location;
-            Properties.Settings.Default.Save();
+            Settings.Default.WindowsLocation = this.Location;
+            Settings.Default.WindowsSize = this.WindowState == FormWindowState.Normal ? this.Size : this.RestoreBounds.Size;
+
+            Settings.Default.Save();
         }
 
         /// <summary>
@@ -70,7 +74,8 @@ namespace QuickReview.Outlook
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.Location = Properties.Settings.Default.WindowsLocation;
+            this.Location = Settings.Default.WindowsLocation;
+            this.Size = Settings.Default.WindowsSize;            
         }
     }
 }

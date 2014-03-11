@@ -46,5 +46,17 @@ namespace QuickReview.Outlook.Properties {
                 this["WindowsLocation"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("500, 300")]
+        public global::System.Drawing.Size WindowsSize {
+            get {
+                return ((global::System.Drawing.Size)(this["WindowsSize"]));
+            }
+            set {
+                this["WindowsSize"] = value;
+            }
+        }
     }
 }

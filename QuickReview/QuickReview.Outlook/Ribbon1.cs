@@ -149,13 +149,22 @@ namespace QuickReview.Outlook
             this.pointY = 0;
             var orderedShelvesets = TfsConnect.GetOrderedShelvesets(TfsConnect.CurrentUser);
 
+            // we should only have one instance of the form
+            if (this.form != null && !this.form.IsDisposed)
+            {
+                if (this.form.WindowState == FormWindowState.Minimized)
+                    this.form.WindowState = FormWindowState.Normal;
+                this.form.Focus();
+                this.form.BringToFront();
+                return;
+            }
+
             this.form = new Form1
                 {
                     Text = "Shelvesets for " + TfsConnect.CurrentUser,
                     txtBoxEmailRecipient = { Text = Properties.Settings.Default.EmailRecipient },
                     lblShelvesetCount = { Text = orderedShelvesets.Count + " shelvesets" },
                 };
-
             this.form.lblShelvesetCount.Font = new Font(this.form.lblShelvesetCount.Font, FontStyle.Bold);
 
             var buttons = new List<Button>();          
@@ -171,7 +180,7 @@ namespace QuickReview.Outlook
                 this.form.panelShelvesets.Controls.Add(b);
             }
 
-            this.form.Show();
+            this.form.Show();           
         }
 
         /// <summary>
@@ -180,8 +189,13 @@ namespace QuickReview.Outlook
         /// <param name="control">The control.</param>
         public void OnAboutButton(Office.IRibbonControl control)
         {
-            AboutBox1 about = new AboutBox1();
-            about.richTextBox1.Rtf = Properties.Resources.about1;
+            var about = new AboutBox1 
+            {
+                richTextBox1 =
+                {
+                    Rtf = Properties.Resources.about1
+                } 
+            };
             about.Show();
         }
 
@@ -211,7 +225,7 @@ namespace QuickReview.Outlook
         private void Button_Click(object sender, EventArgs e)
         {
             var shelvesetReport = new ShelvesetReport(((Button)sender).Tag.ToString(), TfsConnect.CurrentUser);
-            shelvesetReport.PrepareEmail(string.IsNullOrEmpty(form.txtBoxEmailRecipient.Text) ? string.Empty : form.txtBoxEmailRecipient.Text);
+            shelvesetReport.PrepareEmail(string.IsNullOrEmpty(form.txtBoxEmailRecipient.Text) ? string.Empty : form.txtBoxEmailRecipient.Text);            
         }
 
         /// <summary>
@@ -226,7 +240,8 @@ namespace QuickReview.Outlook
                 Tag = sw.Name,
                 BackColor = SystemColors.Control,
                 Location = new System.Drawing.Point(0, this.pointY),
-                Size = new System.Drawing.Size(this.form.panelShelvesets.Width - 17, ButtonHeight),
+                Size = new System.Drawing.Size(this.form.panelShelvesets.Width, ButtonHeight),
+                Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
                 
             };
             
@@ -244,6 +259,7 @@ namespace QuickReview.Outlook
             {
                 Text = string.Format("{0:g}", sw.CreationDate),
                 AutoSize = true,
+                Anchor = AnchorStyles.Right
 
             };
 

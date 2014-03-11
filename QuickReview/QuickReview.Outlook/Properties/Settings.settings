@@ -8,5 +8,8 @@
     <Setting Name="WindowsLocation" Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">650, 150</Value>
     </Setting>
+    <Setting Name="WindowsSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">500, 300</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
