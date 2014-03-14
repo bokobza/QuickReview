@@ -24,6 +24,7 @@
 // 3. Assign attributes to the control tags in the Ribbon XML file to identify the appropriate callback methods in your code.  
 
 // For more information, see the Ribbon XML documentation in the Visual Studio Tools for Office Help.
+// http://msdn.microsoft.com/en-us/library/aa338202.aspx
 
 
 namespace QuickReview.Outlook
@@ -196,7 +197,7 @@ namespace QuickReview.Outlook
                     Rtf = Properties.Resources.about1
                 } 
             };
-            about.Show();
+            about.ShowDialog();
         }
 
         /// <summary>

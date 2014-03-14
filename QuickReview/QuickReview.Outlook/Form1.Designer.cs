@@ -85,6 +85,7 @@
             this.Controls.Add(this.lblShelvesetCount);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(150, 118);
             this.Name = "Form1";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "My shelvesets";
