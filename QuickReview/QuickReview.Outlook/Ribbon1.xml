@@ -13,18 +13,18 @@
                   label="Shelvesets"
                   getImage="GetImageCallback"/>
           <separator visible="true" id="separatorLine"/>
-          <editBox enabled="true" id="emailRecipientBox"
-                   screentip="Default email recipient"
-                   supertip="The default email address to send the review to"
-                   visible="true"
-                   getText="EmailRecipientBoxCallbackSetText"
-                   onChange="EmailRecipientBoxCallbackOnChange"/>
+          <button enabled="true"
+                  id="settingsButton"
+                  screentip="Settings"
+                  onAction="OnSettingsButton"
+                  label="Settings"
+                  getImage="GetImageCallback"/>
           <button enabled="true"
                   id="aboutButton"
                   screentip="About"
                   onAction="OnAboutButton"
                   label="About"
-                  getImage="GetImageCallback"/>
+                  getImage="GetImageCallback"/>          
         </group>
       </tab>
     </tabs>

@@ -11,5 +11,11 @@
     <Setting Name="WindowsSize" Type="System.Drawing.Size" Scope="User">
       <Value Profile="(Default)">500, 300</Value>
     </Setting>
+    <Setting Name="TeamServerUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SettingsWindowsLocation" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">650, 150</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

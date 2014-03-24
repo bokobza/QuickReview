@@ -23,7 +23,8 @@ namespace QuickReview.Lib
         /// </summary>
         public ShelvesetData()
         {
-            this.TeamWebAccessUrl = ConfigurationManager.AppSettings.Get("teamWebAccessUrl");
+
+            this.TeamWebAccessUrl = TfsConnect.TfsWebAddress;
         }
 
         /// <summary>

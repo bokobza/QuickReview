@@ -45,7 +45,23 @@ namespace QuickReview.Outlook
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
             // initialize the connection to TFS.
-            TfsConnect.Initialize(ConfigurationManager.AppSettings.Get("teamProjectUrl"));
+            var url = Properties.Settings.Default.TeamServerUrl;
+            Uri uriResult;
+            if (!string.IsNullOrEmpty(url) && Uri.TryCreate(url, UriKind.Absolute, out uriResult) && uriResult.Scheme == Uri.UriSchemeHttp)
+            {
+                try
+                {
+                    TfsConnect.Initialize(url);
+                }
+                catch (Exception)
+                {
+                    TfsConnect.isInitialized = false;
+                }                
+            }
+            else
+            {
+                TfsConnect.isInitialized = false;
+            }
         }
 
         /// <summary>

@@ -104,42 +104,7 @@ namespace QuickReview.Outlook
             this.ribbon.Invalidate();
         }
 
-        /// <summary>
-        /// Callback for setting the text in the editBox.
-        /// </summary>
-        /// <param name="control">The control.</param>
-        /// <returns>The text to put in the editBox</returns>
-        public string EmailRecipientBoxCallbackSetText(Office.IRibbonControl control)
-        {
-            switch (control.Id)
-            {
-                case "emailRecipientBox":
-                    return string.IsNullOrEmpty(Properties.Settings.Default.EmailRecipient) ? "Default recipient" : Properties.Settings.Default.EmailRecipient;
-                default:
-                    return string.Empty;
-            }            
-        }
-
-        /// <summary>
-        /// Callback for persisting the text entered in the editbox to the settings.
-        /// </summary>
-        /// <param name="control">The control.</param>
-        /// <param name="text">The text.</param>
-        public void EmailRecipientBoxCallbackOnChange(Office.IRibbonControl control, string text)
-        {
-            Properties.Settings.Default.EmailRecipient = text;
-        }
-
         #endregion
-
-        /// <summary>
-        /// Called when [change edit box].
-        /// </summary>
-        /// <param name="control">The control.</param>
-        public void OnChangeEditBox(Office.IRibbonControl control)
-        {
-            Properties.Settings.Default.EmailRecipient = control.Context.Text;
-        }
 
         /// <summary>
         /// Called when [shelvesets button].
@@ -148,7 +113,18 @@ namespace QuickReview.Outlook
         public void OnShelvesetsButton(Office.IRibbonControl control)
         {
             this.pointY = 0;
-            var orderedShelvesets = TfsConnect.GetOrderedShelvesets(TfsConnect.CurrentUser);
+            List<ShelvesetWrapper> orderedShelvesets;
+
+            if (TfsConnect.isInitialized)
+            {
+                orderedShelvesets = TfsConnect.GetOrderedShelvesets(TfsConnect.CurrentUser);
+            }    
+            else
+            {
+                MessageBox.Show("Please make sure that the Team Server Url is defined properly in the settings.", "ermahgerd ferleure");
+                new SettingsBox().ShowDialog();
+                return;
+            }
 
             // we should only have one instance of the form
             if (this.form != null && !this.form.IsDisposed)
@@ -200,6 +176,19 @@ namespace QuickReview.Outlook
         }
 
         /// <summary>
+        /// Called when [about button].
+        /// </summary>
+        /// <param name="control">The control.</param>
+        public void OnSettingsButton(Office.IRibbonControl control)
+        {
+            var settings = new SettingsBox()
+            {
+            };
+            settings.ShowDialog();
+        }
+
+
+        /// <summary>
         /// Gets the image callback.
         /// </summary>
         /// <param name="control">The control.</param>
@@ -211,7 +200,9 @@ namespace QuickReview.Outlook
                 case "shelvesetsButton":
                     return PictureConverter.ImageToPictureDisp(Properties.Resources._3);            
                 case "aboutButton":
-                    return PictureConverter.ImageToPictureDisp(Properties.Resources.about);      
+                    return PictureConverter.ImageToPictureDisp(Properties.Resources.info);
+                case "settingsButton":
+                    return PictureConverter.ImageToPictureDisp(Properties.Resources.settings);      
                 default:
                     return null;
             }            

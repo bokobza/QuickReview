@@ -58,5 +58,29 @@ namespace QuickReview.Outlook.Properties {
                 this["WindowsSize"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TeamServerUrl {
+            get {
+                return ((string)(this["TeamServerUrl"]));
+            }
+            set {
+                this["TeamServerUrl"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("650, 150")]
+        public global::System.Drawing.Point SettingsWindowsLocation {
+            get {
+                return ((global::System.Drawing.Point)(this["SettingsWindowsLocation"]));
+            }
+            set {
+                this["SettingsWindowsLocation"] = value;
+            }
+        }
     }
 }

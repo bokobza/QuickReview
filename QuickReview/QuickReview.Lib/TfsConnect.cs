@@ -30,13 +30,16 @@ namespace QuickReview.Lib
         private static VersionControlServer versionControlcServer;
 
         /// <summary>Value indicating whether the connection to TFS has been initialized.</summary>
-        private static bool isInitialized;
+        public static bool isInitialized;
 
         /// <summary>The address of the team project in TFS.</summary>
         private static Uri tfsAddress;
 
         /// <summary>The TFS project collection.</summary>
         private static TfsTeamProjectCollection projectCollection;
+
+        /// <summary>Gets the address of the team project in TFS for the web.</summary>
+        public static string TfsWebAddress { get; private set; }
 
         /// <summary>Gets the team project id.</summary>
         /// <value>The project id.</value>
@@ -58,6 +61,7 @@ namespace QuickReview.Lib
         public static void Initialize(string uriAddress, bool forWeb = false)
         {
             tfsAddress = new Uri(uriAddress);
+            TfsWebAddress = string.IsNullOrEmpty(ConfigurationManager.AppSettings.Get("teamWebAccessUrl")) ? string.Format("{0}/web", uriAddress) : ConfigurationManager.AppSettings.Get("teamWebAccessUrl");
 
             // gets the project id
             projectCollection = new TfsTeamProjectCollection(tfsAddress, new UICredentialsProvider());
