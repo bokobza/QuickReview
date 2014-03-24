@@ -163,7 +163,6 @@ namespace QuickReview.Outlook
             this.form = new Form1
                 {
                     Text = "Shelvesets for " + TfsConnect.CurrentUser,
-                    txtBoxEmailRecipient = { Text = Properties.Settings.Default.EmailRecipient },
                     lblShelvesetCount = { Text = orderedShelvesets.Count + " shelvesets" },
                 };
             this.form.lblShelvesetCount.Font = new Font(this.form.lblShelvesetCount.Font, FontStyle.Bold);
@@ -226,7 +225,7 @@ namespace QuickReview.Outlook
         private void Button_Click(object sender, EventArgs e)
         {
             var shelvesetReport = new ShelvesetReport(((Button)sender).Tag.ToString(), TfsConnect.CurrentUser);
-            shelvesetReport.PrepareEmail(string.IsNullOrEmpty(form.txtBoxEmailRecipient.Text) ? string.Empty : form.txtBoxEmailRecipient.Text);            
+            shelvesetReport.PrepareEmail(string.IsNullOrEmpty(Properties.Settings.Default.EmailRecipient) ? string.Empty : Properties.Settings.Default.EmailRecipient);            
         }
 
         /// <summary>

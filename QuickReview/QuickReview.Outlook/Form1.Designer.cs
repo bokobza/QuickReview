@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lblShelvesetCount = new System.Windows.Forms.Label();
             this.panelShelvesets = new System.Windows.Forms.Panel();
-            this.txtBoxEmailRecipient = new System.Windows.Forms.TextBox();
-            this.lblEmailRecipient = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblShelvesetCount
@@ -55,35 +54,15 @@
             this.panelShelvesets.Size = new System.Drawing.Size(484, 222);
             this.panelShelvesets.TabIndex = 2;
             // 
-            // txtBoxEmailRecipient
-            // 
-            this.txtBoxEmailRecipient.Location = new System.Drawing.Point(251, 13);
-            this.txtBoxEmailRecipient.Name = "txtBoxEmailRecipient";
-            this.txtBoxEmailRecipient.Size = new System.Drawing.Size(172, 20);
-            this.txtBoxEmailRecipient.TabIndex = 3;
-            this.txtBoxEmailRecipient.Visible = false;
-            this.txtBoxEmailRecipient.TextChanged += new System.EventHandler(this.TxtBoxEmailRecipient_TextChanged);
-            // 
-            // lblEmailRecipient
-            // 
-            this.lblEmailRecipient.AutoSize = true;
-            this.lblEmailRecipient.Location = new System.Drawing.Point(170, 16);
-            this.lblEmailRecipient.Name = "lblEmailRecipient";
-            this.lblEmailRecipient.Size = new System.Drawing.Size(77, 13);
-            this.lblEmailRecipient.TabIndex = 4;
-            this.lblEmailRecipient.Text = "email recipient:";
-            this.lblEmailRecipient.Visible = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 261);
-            this.Controls.Add(this.lblEmailRecipient);
-            this.Controls.Add(this.txtBoxEmailRecipient);
             this.Controls.Add(this.panelShelvesets);
             this.Controls.Add(this.lblShelvesetCount);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(150, 118);
             this.Name = "Form1";
@@ -100,7 +79,5 @@
 
         public System.Windows.Forms.Label lblShelvesetCount;
         public System.Windows.Forms.Panel panelShelvesets;
-        public System.Windows.Forms.TextBox txtBoxEmailRecipient;
-        private System.Windows.Forms.Label lblEmailRecipient;
     }
 }
