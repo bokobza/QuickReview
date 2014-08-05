@@ -24,13 +24,13 @@ namespace QuickReview.Outlook
         /// </summary>
         public SettingsBox()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         /// <summary>
         /// Close the form on escape.
         /// </summary>
-        /// <param name="msg">the msg</param>
+        /// <param name="msg">the message</param>
         /// <param name="keyData">the key data</param>
         /// <returns>
         /// true if the keystroke was processed and consumed by the control; otherwise, false to allow further processing.
@@ -46,27 +46,27 @@ namespace QuickReview.Outlook
         }
 
         /// <summary>
-        /// Handles the Click event of the btnCancelSettings control.
+        /// Handles the Click event of the button to cancel the settings.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void btnCancelSettings_Click(object sender, EventArgs e)
+        private void BtnCancelSettings_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
         /// <summary>
-        /// Handles the Click event of the btnOKSettings control.
+        /// Handles the Click event of the OK button.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void btnOKSettings_Click(object sender, EventArgs e)
+        private void BtnOKSettings_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.EmailRecipient = this.txtBoxEmailRecipient.Text;
+            Settings.Default.EmailRecipient = this.txtBoxEmailRecipient.Text;
             
             // save the url to TFS and try to reconnect to it
             var url = this.txtBoxTeamServerUrl.Text;
-            Properties.Settings.Default.TeamServerUrl = url;
+            Settings.Default.TeamServerUrl = url;
             
             Uri uriResult;            
             if (!string.IsNullOrEmpty(url) && Uri.TryCreate(url, UriKind.Absolute, out uriResult) && uriResult.Scheme == Uri.UriSchemeHttp)
@@ -96,8 +96,8 @@ namespace QuickReview.Outlook
         private void SettingsBox_Load(object sender, EventArgs e)
         {
             this.Location = Settings.Default.SettingsWindowsLocation;
-            this.txtBoxEmailRecipient.Text = string.IsNullOrEmpty(Properties.Settings.Default.EmailRecipient) ? Properties.Resources.EmailRecipientBoxMessage : Properties.Settings.Default.EmailRecipient;
-            this.txtBoxTeamServerUrl.Text = string.IsNullOrEmpty(Properties.Settings.Default.TeamServerUrl) ? Properties.Resources.TeamServerUrlBoxMessage : Properties.Settings.Default.TeamServerUrl;
+            this.txtBoxEmailRecipient.Text = string.IsNullOrEmpty(Settings.Default.EmailRecipient) ? Resources.EmailRecipientBoxMessage : Settings.Default.EmailRecipient;
+            this.txtBoxTeamServerUrl.Text = string.IsNullOrEmpty(Settings.Default.TeamServerUrl) ? Resources.TeamServerUrlBoxMessage : Settings.Default.TeamServerUrl;
         }
 
         /// <summary>

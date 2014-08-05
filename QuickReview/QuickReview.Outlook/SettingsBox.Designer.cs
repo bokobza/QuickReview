@@ -77,7 +77,7 @@
             this.btnOKSettings.TabIndex = 4;
             this.btnOKSettings.Text = "OK";
             this.btnOKSettings.UseVisualStyleBackColor = true;
-            this.btnOKSettings.Click += new System.EventHandler(this.btnOKSettings_Click);
+            this.btnOKSettings.Click += new System.EventHandler(this.BtnOKSettings_Click);
             // 
             // btnCancelSettings
             // 
@@ -87,7 +87,7 @@
             this.btnCancelSettings.TabIndex = 5;
             this.btnCancelSettings.Text = "Cancel";
             this.btnCancelSettings.UseVisualStyleBackColor = true;
-            this.btnCancelSettings.Click += new System.EventHandler(this.btnCancelSettings_Click);
+            this.btnCancelSettings.Click += new System.EventHandler(this.BtnCancelSettings_Click);
             // 
             // SettingsBox
             // 

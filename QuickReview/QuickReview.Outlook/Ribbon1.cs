@@ -11,7 +11,7 @@
 
 // 1: Copy the following code block into the ThisAddin, ThisWorkbook, or ThisDocument class.
 
-//  protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
+// protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
 //  {
 //      return new Ribbon1();
 //  }

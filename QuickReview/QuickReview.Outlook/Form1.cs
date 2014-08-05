@@ -42,18 +42,7 @@ namespace QuickReview.Outlook
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
-
-        /// <summary>
-        /// Handles the TextChanged event of the txtBoxEmailRecipient control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void TxtBoxEmailRecipient_TextChanged(object sender, EventArgs e)
-        {
-            Settings.Default.EmailRecipient = ((TextBox)sender).Text;
-            Settings.Default.Save();
-        }
-
+        
         /// <summary>
         /// Handles the FormClosed event of the Form1 control.
         /// </summary>
