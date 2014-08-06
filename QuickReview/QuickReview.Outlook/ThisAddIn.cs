@@ -17,6 +17,7 @@ namespace QuickReview.Outlook
     using System.Windows.Forms;
 
     using QuickReview.Lib;
+    using QuickReview.Outlook.Properties;
 
     using Office = Microsoft.Office.Core;
     using Outlook = Microsoft.Office.Interop.Outlook;
@@ -45,7 +46,7 @@ namespace QuickReview.Outlook
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
             // initialize the connection to TFS.
-            var url = Properties.Settings.Default.TeamServerUrl;
+            var url = Settings.Default.TeamServerUrl;
             Uri uriResult;
             if (!string.IsNullOrEmpty(url) && Uri.TryCreate(url, UriKind.Absolute, out uriResult) && uriResult.Scheme == Uri.UriSchemeHttp)
             {

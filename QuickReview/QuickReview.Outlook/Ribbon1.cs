@@ -38,6 +38,7 @@ namespace QuickReview.Outlook
     using System.Windows.Forms;
 
     using QuickReview.Lib;
+    using QuickReview.Outlook.Properties;
 
     using stdole;
 
@@ -121,9 +122,18 @@ namespace QuickReview.Outlook
             }    
             else
             {
-                MessageBox.Show("Please make sure that the Team Server Url is defined properly in the settings.", "ermahgerd ferleure");
-                new SettingsBox().ShowDialog();
-                return;
+                try
+                {
+                    TfsConnect.Initialize(Settings.Default.TeamServerUrl);
+                    orderedShelvesets = TfsConnect.GetOrderedShelvesets(TfsConnect.CurrentUser);
+                }
+                catch (Exception)
+                {
+                    TfsConnect.isInitialized = false;
+                    MessageBox.Show("Please make sure that the Team Server Url is defined properly in the settings.", "ermahgerd ferleure");
+                    new SettingsBox().ShowDialog();
+                    return;
+                }        
             }
 
             // we should only have one instance of the form
