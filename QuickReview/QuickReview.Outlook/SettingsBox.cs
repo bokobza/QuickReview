@@ -85,6 +85,8 @@ namespace QuickReview.Outlook
                 TfsConnect.isInitialized = false;
             }
 
+            Settings.Default.CloseShelvesetWindowOnSelection = this.closeShelvesetWindowsCheckBox.Checked;
+
             this.Close();
         }
 
@@ -109,6 +111,6 @@ namespace QuickReview.Outlook
         {
             Settings.Default.SettingsWindowsLocation = this.Location;
             Settings.Default.Save();
-        }
+        }      
     }
 }

@@ -17,5 +17,8 @@
     <Setting Name="SettingsWindowsLocation" Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">650, 150</Value>
     </Setting>
+    <Setting Name="CloseShelvesetWindowOnSelection" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

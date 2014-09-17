@@ -82,5 +82,17 @@ namespace QuickReview.Outlook.Properties {
                 this["SettingsWindowsLocation"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CloseShelvesetWindowOnSelection {
+            get {
+                return ((bool)(this["CloseShelvesetWindowOnSelection"]));
+            }
+            set {
+                this["CloseShelvesetWindowOnSelection"] = value;
+            }
+        }
     }
 }

@@ -35,6 +35,9 @@
             this.txtBoxTeamServerUrl = new System.Windows.Forms.TextBox();
             this.btnOKSettings = new System.Windows.Forms.Button();
             this.btnCancelSettings = new System.Windows.Forms.Button();
+            this.closeShelvesetWindowsCheckBox = new System.Windows.Forms.CheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblEmailRecipient
@@ -56,7 +59,7 @@
             // lblTeamProjectUrl
             // 
             this.lblTeamProjectUrl.AutoSize = true;
-            this.lblTeamProjectUrl.Location = new System.Drawing.Point(3, 44);
+            this.lblTeamProjectUrl.Location = new System.Drawing.Point(3, 45);
             this.lblTeamProjectUrl.Name = "lblTeamProjectUrl";
             this.lblTeamProjectUrl.Size = new System.Drawing.Size(86, 13);
             this.lblTeamProjectUrl.TabIndex = 2;
@@ -71,7 +74,7 @@
             // 
             // btnOKSettings
             // 
-            this.btnOKSettings.Location = new System.Drawing.Point(224, 78);
+            this.btnOKSettings.Location = new System.Drawing.Point(224, 171);
             this.btnOKSettings.Name = "btnOKSettings";
             this.btnOKSettings.Size = new System.Drawing.Size(75, 23);
             this.btnOKSettings.TabIndex = 4;
@@ -81,7 +84,7 @@
             // 
             // btnCancelSettings
             // 
-            this.btnCancelSettings.Location = new System.Drawing.Point(310, 78);
+            this.btnCancelSettings.Location = new System.Drawing.Point(310, 171);
             this.btnCancelSettings.Name = "btnCancelSettings";
             this.btnCancelSettings.Size = new System.Drawing.Size(75, 23);
             this.btnCancelSettings.TabIndex = 5;
@@ -89,11 +92,31 @@
             this.btnCancelSettings.UseVisualStyleBackColor = true;
             this.btnCancelSettings.Click += new System.EventHandler(this.BtnCancelSettings_Click);
             // 
+            // closeShelvesetWindowsCheckBox
+            // 
+            this.closeShelvesetWindowsCheckBox.Location = new System.Drawing.Point(6, 22);
+            this.closeShelvesetWindowsCheckBox.Name = "closeShelvesetWindowsCheckBox";
+            this.closeShelvesetWindowsCheckBox.Size = new System.Drawing.Size(225, 17);
+            this.closeShelvesetWindowsCheckBox.TabIndex = 0;
+            this.closeShelvesetWindowsCheckBox.Text = "Close shelvesets window on selection";
+            this.closeShelvesetWindowsCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.closeShelvesetWindowsCheckBox);
+            this.groupBox1.Location = new System.Drawing.Point(6, 78);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(379, 80);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Options";
+            // 
             // SettingsBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(392, 105);
+            this.ClientSize = new System.Drawing.Size(392, 199);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancelSettings);
             this.Controls.Add(this.btnOKSettings);
             this.Controls.Add(this.txtBoxTeamServerUrl);
@@ -110,6 +133,7 @@
             this.TopMost = true;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SettingsBox_FormClosed);
             this.Load += new System.EventHandler(this.SettingsBox_Load);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -123,5 +147,7 @@
         private System.Windows.Forms.TextBox txtBoxTeamServerUrl;
         private System.Windows.Forms.Button btnOKSettings;
         private System.Windows.Forms.Button btnCancelSettings;
+        private System.Windows.Forms.CheckBox closeShelvesetWindowsCheckBox;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

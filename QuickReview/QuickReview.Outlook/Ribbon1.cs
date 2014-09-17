@@ -226,7 +226,11 @@ namespace QuickReview.Outlook
         private void Button_Click(object sender, EventArgs e)
         {
             var shelvesetReport = new ShelvesetReport(((Button)sender).Tag.ToString(), TfsConnect.CurrentUser);
-            shelvesetReport.PrepareEmail(string.IsNullOrEmpty(Properties.Settings.Default.EmailRecipient) ? string.Empty : Properties.Settings.Default.EmailRecipient);            
+            shelvesetReport.PrepareEmail(string.IsNullOrEmpty(Properties.Settings.Default.EmailRecipient) ? string.Empty : Properties.Settings.Default.EmailRecipient);
+            if (Settings.Default.CloseShelvesetWindowOnSelection)
+            {
+                this.form.Close();
+            }
         }
 
         /// <summary>
