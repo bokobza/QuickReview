@@ -100,6 +100,7 @@ namespace QuickReview.Outlook
             this.Location = Settings.Default.SettingsWindowsLocation;
             this.txtBoxEmailRecipient.Text = string.IsNullOrEmpty(Settings.Default.EmailRecipient) ? Resources.EmailRecipientBoxMessage : Settings.Default.EmailRecipient;
             this.txtBoxTeamServerUrl.Text = string.IsNullOrEmpty(Settings.Default.TeamServerUrl) ? Resources.TeamServerUrlBoxMessage : Settings.Default.TeamServerUrl;
+            this.closeShelvesetWindowsCheckBox.Checked = Settings.Default.CloseShelvesetWindowOnSelection;
         }
 
         /// <summary>
@@ -109,7 +110,7 @@ namespace QuickReview.Outlook
         /// <param name="e">The <see cref="FormClosedEventArgs" /> instance containing the event data.</param>
         private void SettingsBox_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Settings.Default.SettingsWindowsLocation = this.Location;
+            Settings.Default.SettingsWindowsLocation = this.Location;            
             Settings.Default.Save();
         }      
     }

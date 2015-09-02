@@ -127,10 +127,10 @@ namespace QuickReview.Outlook
                     TfsConnect.Initialize(Settings.Default.TeamServerUrl);
                     orderedShelvesets = TfsConnect.GetOrderedShelvesets(TfsConnect.CurrentUser);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     TfsConnect.isInitialized = false;
-                    MessageBox.Show("Please make sure that the Team Server Url is defined properly in the settings.", "ermahgerd ferleure");
+                    MessageBox.Show("Please make sure that the Team Server Url is defined properly in the settings. Exception was " + ex.Message, "ermahgerd ferleure");
                     new SettingsBox().ShowDialog();
                     return;
                 }        
