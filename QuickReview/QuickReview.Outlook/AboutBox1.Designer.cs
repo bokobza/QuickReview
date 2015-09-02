@@ -102,7 +102,7 @@
             this.labelCopyright.Name = "labelCopyright";
             this.labelCopyright.Size = new System.Drawing.Size(271, 17);
             this.labelCopyright.TabIndex = 21;
-            this.labelCopyright.Text = "Copyright (c) 2014 Jeremy Bokobza";
+            this.labelCopyright.Text = "Copyright (c) 2015 Jeremy Bokobza";
             this.labelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // richTextBox1
